@@ -10,6 +10,10 @@ Built for the [Nebius x NVIDIA Global AI Hackathon](https://nebiusglobalaihackat
 
 License: [Apache 2.0](LICENSE)
 
+![RegPulse impact board](docs/impact-board.png)
+
+![Evidence view: the regulator's sentence highlighted next to the affected policy](docs/evidence.png)
+
 ---
 
 ## The problem
