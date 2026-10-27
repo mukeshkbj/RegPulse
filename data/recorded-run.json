@@ -1,0 +1,775 @@
+{
+  "id": "run-1793097043563",
+  "startedAt": "2026-10-27T10:30:43.563Z",
+  "source": "corpus",
+  "mock": false,
+  "window": {
+    "from": "2026-10-01",
+    "to": "2026-10-27"
+  },
+  "publications": [
+    {
+      "id": "fca-cp26-38",
+      "regulator": "FCA",
+      "type": "Consultation paper",
+      "title": "CP26/38: Financial Crime Guide updates",
+      "url": "https://www.fca.org.uk/publications/consultation-papers/cp26-38-financial-crime-guide-updates",
+      "published": "2026-10-23",
+      "text": "CP26/38: Financial Crime Guide updates\nConsultation opens 23/10/2026. Consultation closes 24/12/2026.\nWe're consulting on changes to our Financial Crime Guide to help firms strengthen their systems and controls.\nWhy we're consulting\nFirms are essential partners in tackling financial crime.\nWe want firms to keep detecting, preventing and disrupting financial crime, so we can protect consumers and maintain trust in the financial system.\nWe want our Financial Crime Guide to keep pace with emerging risks, such as those linked to AI, cryptoassets and evolving sanctions regimes.\nWe’re proposing changes to the following areas:\nfraud\ncryptoassets – to reflect new regime from October 2027\nfinancial and trade sanctions\nproliferation financing\ndata security\nfinancial crime systems and controls\nmoney laundering and terrorist financing\nWho this is for\nThis consultation is relevant to all firms we supervise for financial crime, including under the Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations 2017 (MLRs), such as:\nAnnex 1 financial institutions\ncryptoasset businesses\nIt may also interest:\norganisations working with these firms\nfinancial services trade bodies\nprofessional bodies\nother parties interested in financial crime prevention, including non-governmental organisations and academics\nNext steps\nPlease send us your feedback by 24 December 2026.\nWe'll consider all responses and publish feedback, along with the final Financial Crime Guide text, in a Policy Statement.\nFuture plans for the Financial Crime Guide\nWe are exploring ways to provide financial crime guidance that:\nmeets the needs of our wide-ranging and varied population\nis focused on emerging risks and priority areas\nallows for a range of feedback opportunities\nThis could include:\nholding a series of question-and-answer sessions, either in person or online\npublishing timely standalone guidance without prior consultation, where it is not required\nThis guidance would then be consolidated within the Financial Crime Guide at a future date.\nBackground\nWe last updated the Financial Crime Guide to reflect supervisory findings and changing risks.\nSince then, the UK's sanctions regime has evolved, cryptoasset regulation has developed, and firms have increasingly adopted AI and third-party tools for financial crime controls.\nThese proposals support our objective of making sure markets function well, by reducing and preventing financial crime.\nThey're also relevant to our consumer protection and integrity objectives and compatible with our secondary objective on international competitiveness and growth."
+    },
+    {
+      "id": "fca-annex1-restrictions",
+      "regulator": "FCA",
+      "type": "Press release",
+      "title": "FCA restricts 6 firms following concerns over anti-money laundering controls",
+      "url": "https://www.fca.org.uk/news/press-releases/fca-restricts-6-firms-following-concerns-over-anti-money-laundering-controls",
+      "published": "2026-10-23",
+      "text": "FCA restricts 6 firms following concerns over anti-money laundering controls\nRestrictions have been placed on 6 unregulated lenders, known as Annex 1 firms, after the FCA raised concerns about their anti-money laundering policies, controls and procedures while assessing their applications.\nThe restrictions were imposed by the FCA on each firm’s request and limit their ability to take on new customers or do new business with existing customers, including extending existing credit.\nThis action forms part of the FCA’s enhanced oversight of Annex 1 firms. These firms operate in sectors that can present a heightened risk of money laundering and other financial crime and are required to register with the FCA for supervision under the Money Laundering Regulations. They are not authorised or subject to wider FCA regulation.\nThe FCA has previously warned Annex 1 firms that they will be subject to increased scrutiny. They must be able to demonstrate they understand the financial crime risks they face and have effective systems and controls in place to manage those risks, or face action.\nMore widely, the FCA is assessing responses to an information request sent to around 900 registered Annex 1 firms to identify and disrupt financial crime risks and determine where further action is needed.\nThe FCA has also reminded regulated firms that, when dealing with Annex 1 firms, they must carry out due diligence to understand the firm’s business, in accordance with legislative requirements. This includes seeking direct confirmation from the firm of its registration status, conducting independent checks of the information it provides, and understanding and managing any risks.\nRegistration under the Money Laundering Regulations is not a substitute for regulated firms carrying out their own appropriate due diligence.\nSteve Smart, executive director lead for fighting financial crime at the FCA, said: 'We have warned Annex 1 firms that they face increased scrutiny. They must demonstrate they can manage the money laundering risks they face. Where they cannot satisfy us, we will intervene.'\nNotes to editors\n1. Voluntary restrictions were imposed on Kingscrown Finance Ltd on 21 April 2026, with further voluntary restrictions imposed on 25 September 2026. The further restrictions limit how Kingscrown may receive payments from existing customers and require an orderly wind-down of its existing loan book.\n2. On 7 October 2026, voluntary restrictions were imposed on MOMSB Ltd and Momentus Capital Ltd. The restrictions prevent the firms from taking on new customers or entering into new lending arrangements subject to limited exceptions, restrict the circumstances in which they may accept payments from existing customers, and require an independent review of their anti-money laundering framework.\n3. On 9 October 2026, voluntary restrictions were imposed on Grosvenor Funding Ltd and Grosvenor Funding (North West) Ltd. The restrictions prevent the firms from taking on new customers or entering into new lending arrangements, restrict the circumstances in which they may accept payments from existing customers, and require an independent review of their anti-money laundering framework.\n4. On 15 October 2026, voluntary restrictions were imposed on Abbital Ltd. The restrictions specify the circumstances in which Abbital may take on new customers, enter into new lending arrangements or accept payments from existing customers. They also require an independent review of Abbital’s anti-money laundering systems and controls.\n5. Fighting financial crime is one of the FCA's strategic priorities."
+    },
+    {
+      "id": "ico-agentic-ai-cfe",
+      "regulator": "ICO",
+      "type": "Call for evidence",
+      "title": "Agentic AI call for evidence",
+      "url": "https://ico.org.uk/about-the-ico/ico-and-stakeholder-consultations/2026/10/agentic-ai-call-for-evidence",
+      "published": "2026-10-08",
+      "text": "Agentic AI call for evidence\nStart date 8 October 2026\nClosing date 20 November 2026\nType ICO consultation\nStatus Open\nThe Information Commissioner’s Office is calling for evidence to inform our thinking on how to apply data protection law to the distinctive capabilities and risks of agentic AI.\nYour responses will help us identify where we can provide greater clarity or practical support before we publish the final version of the guidance.\nWe welcome your feedback on the questions in this survey. They are split into the following sections:\nSection 1: About you and your organisation\nSection 2: Data Security\nSection 3: Transparency\nSection 4: Accountability\nSection 5: Automated Decision Making (ADM)\nSection 6: Fairness and purpose limitations\nSection 7: Lawfulness of Processing\nSection 8: Additional questions\nHow to respond\nYou can respond to the call for evidence through Citizen Space.\nThe consultation will remain open until the end of 20 November 2026. We may not consider responses received after this deadline."
+    },
+    {
+      "id": "ico-guidance-pipeline-tech",
+      "regulator": "ICO",
+      "type": "Guidance plan",
+      "title": "ICO plans for new and updated guidance: Technology",
+      "url": "http://www.ico.org.uk/about-the-ico/what-we-do/our-plans-for-new-and-updated-guidance/technology",
+      "published": "2026-10-01",
+      "text": "Agentic AI guidance\nStage: Drafting\nPublic consultation: Yes (due to launch September 2026)\nFinal version of guidance due for publication: Autumn 2026\nGuidance on the use of anonymisation and pseudonymisation for research purposes\nStage: Public consultation / call for views (optional)\nPublic consultation: Yes (open)\nFinal version of guidance due for publication: Winter 2026\nAutomated Decision Making (ADM) and Profiling Guidance update\nGuidance on automated decision-making and profiling including amendments in the Data (Use and Access) Act  Stage: Drafting\nPublic consultation: Yes (closed)\nFinal version of guidance due for publication: Winter 2026\nDistributed Ledger Technologies (DLT) guidance\nStage: Redrafting (following consultation)\nPublic consultation: Yes (Closed)\nFinal version of guidance due for publication: Winter 2026\nFoundation Models\nICO oversight of foundation models, improving data protection compliance, reducing harms and providing guidance to industry.\nStage: Drafting\nPublic consultation: No\nFinal version of guidance due for publication: Autumn 2026\nNeurotechnology and neurodata guidance\nGuidance on the application of data protection legislation to the use of neurotechnologies and neurodata.    Stage: Drafting\nPublic consultation: Yes (due to launch October 2026)\nFinal version of guidance due for publication: Winter 2026/2027"
+    },
+    {
+      "id": "boe-fca-ai-survey-2026",
+      "regulator": "BoE/FCA",
+      "type": "Report",
+      "title": "Artificial intelligence in UK financial services - 2026",
+      "url": "https://www.bankofengland.co.uk/report/2026/artificial-intelligence-in-uk-financial-services-2026",
+      "published": "2026-10-26",
+      "text": "The Bank of England and Financial Conduct Authority conducted a fourth survey of artificial intelligence and machine learning in UK financial services.\n7.5: Uncertainty and implementation challenges\nThe most common governance challenges concerned oversight of third-party AI systems. Applying model risk management principles to third-party or vendor-supplied models was the most frequently selected challenge (54%), followed by overseeing systems provided or materially influenced by third parties (49%).\nA second group of challenges concerned the validation and ongoing management of complex or evolving models. Around two-fifths of respondents identified independent validation, ongoing monitoring and drift detection, or change control and versioning as challenges.\nChallenges relating to accountability, documentation and senior-manager understanding were reported less frequently. Only a small minority of respondents reported no uncertainty or implementation challenges (Chart 22).\nOversight of third-party AI systems was the most commonly reported area of governance uncertainty or implementation challenge. Applying model risk management principles to third-party or vendor-supplied models was selected by 54% of respondents, while overseeing systems provided or materially influenced by third parties was selected by 49%.\nFrontier AI and cyber risk\nMost firms expected frontier AI cyber capabilities to become material to their risk profiles. 88% of respondents assessed evolving frontier AI cyber capabilities over the next two years as having a moderate or high impact on their firm’s risk profile."
+    },
+    {
+      "id": "fca-cp26-37",
+      "regulator": "FCA",
+      "type": "Consultation paper",
+      "title": "CP26/37: Senior Managers and Certification Regime (SM&CR) Review: Phase 2",
+      "url": "https://www.fca.org.uk/publications/consultation-papers/cp26-37-senior-managers-certification-regime-review-phase-2",
+      "published": "2026-10-22",
+      "text": "CP26/37: Senior Managers and Certification Regime (SM&CR) Review: Phase 2\nConsultation open 22/10/2026. Consultation close 22/01/2027.\nWe’re consulting on changes to streamline and improve the Senior Managers and Certification Regime (SM&CR) as part of the second phase of our reforms.\nWhy we are consulting\nChanges proposed in the Financial Services and Markets (FSM) Bill remove many prescriptive SM&CR requirements from legislation and make regulators responsible for deciding how these should apply in their rules.\nOur proposals aim to maintain high standards of individual accountability and conduct while reducing unnecessary burden, making the regime more proportionate and easier to operate.\nThis consultation builds on the first phase of reforms set out in our Policy Statement (PS26/6).\nThe main proposals include:\nReducing the number of Senior Management Functions (SMF) applications by removing certain SMFs and making other roles notified.\nStreamlining the SMF application process.\nReducing the number of firms subject to the Enhanced regime by raising thresholds.\nRemoving on-going submissions of Statements of Responsibilities and Management Responsibilities Maps.\nStreamlining the Prescribed Responsibilities.\nRemoving the Certification Regime.\nRetiring our Directory of certified and assessed persons.\nSimplifying Conduct Rule training and raising breach reporting thresholds.\nWho this is for\nAll firms already in scope of the SM&CR, including third-country branches.\nFirms due to come into scope of the SM&CR, such as cryptoasset firms.\nFirms regulated by both the PRA and the FCA should also read the PRA’s Consultation Paper CP14/26.\nNext steps\nSend us your comments by 22 January 2027 using our online response form.\nWe will review the feedback and expect to publish final regulatory requirements in a Policy Statement in the first half of 2027.\nBackground\nThe SM&CR strengthens market integrity and helps reduce consumer harm by making senior managers accountable for their areas of responsibility and setting conduct standards for staff.\nThe regime has applied to the banking sector since 2016 and was later extended across financial services. We began reviewing it in December 2022. We published first-phase final rules for Phase 1 in Policy Statement PS26/6 in April 2026, alongside the PRA’s PS12/26."
+    },
+    {
+      "id": "pra-cp13-26",
+      "regulator": "PRA",
+      "type": "Consultation paper",
+      "title": "Regulatory thresholds set to shift to automatic increases (CP13/26)",
+      "url": "https://www.bankofengland.co.uk/news/2026/october/regulatory-thresholds-set-to-shift-to-automatic-increases",
+      "published": "2026-10-07",
+      "text": "Regulatory thresholds set to shift to automatic increases\nProportionality is set to be improved for firms as over 100 regulatory thresholds could be automatically increased periodically.\nThe Prudential Regulation Authority (PRA) proposes that 128 thresholds across banking, insurance and credit unions increase automatically with nominal Gross Domestic Product (GDP) going forward.\nThese thresholds cover which regulatory rules apply to firms, how they do so, and what firms are required to report to the PRA.\nThe proposals would modernise the framework by increasing the proportionality and decreasing the costs of compliance for many firms by replacing the manual ad hoc updates that currently take place. Providing more certainty for firms would assist in their business planning and thereby reduce firms’ barriers to growth.\nThe largest in-scope threshold is the £320 billion total assets threshold for detailed capital reporting, with the smallest being a £7,500 threshold covering amounts owed to a credit union by an individual. Other significant thresholds involved include the size of an insurer subject to Solvency UK and the Small Domestic Deposit Takers regime total assets threshold.\nThe first update would take place on 1 July 2031, with further updates occurring every five years thereafter.\nThe package is expected to benefit all firms, but particularly small and medium sized firms hovering under regulatory thresholds – thereby supporting competition, economic growth and provision of services to the economy.\nThe consultation opens on 7 October 2026, and closes on 7 February 2027."
+    },
+    {
+      "id": "pra-cp14-26",
+      "regulator": "PRA",
+      "type": "Consultation paper",
+      "title": "CP14/26 – Review of the Senior Managers and Certification Regime (SM&CR) – Phase 2",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation/publication/2026/october/review-of-the-smcr-phase-two-consultation-paper",
+      "published": "2026-10-22",
+      "text": "1.1 The Senior Managers and Certification Regime (SM&CR) was introduced in 2016 to strengthen individual accountability for the most senior decision makers in regulated firms. It is one of the principal tools by which the Prudential Regulation Authority (PRA) promotes the safety and soundness of the UK financial system and draws on the lessons learned from the 2008 financial crisis.\n1.2 The regime is widely recognised, both domestically and internationally, to have improved individual accountability and prudential standards within firms. By building confidence in the financial system, it has helped to enhance the UK’s position as a leading financial centre.\n1.4 The PRA has now identified further opportunities for reform that could achieve similar prudential outcomes at a lower cost to firms. The proposals in this consultation paper (CP) would be the most significant reforms to the regime since its introduction. Building on the Phase 1 reforms, these ‘Phase 2’ proposals anticipate additional regulatory flexibility that would be provided by the Financial Services and Markets Bill 2026 (FSM Bill), if enacted.\n8.4 The PRA may share responses to this consultation with the Bank of England, FCA and HM Treasury.\n8.5 The PRA invites responses to the proposals set out in this consultation by 22 January 2027."
+    },
+    {
+      "id": "fca-cp26-35",
+      "regulator": "FCA",
+      "type": "Consultation paper",
+      "title": "CP26/35: Fair redemption terms for authorised funds investing in illiquid assets",
+      "url": "https://www.fca.org.uk/publications/consultation-papers/cp26-35-fair-redemption-terms-authorised-funds-investing-illiquid-assets",
+      "published": "2026-10-08",
+      "text": "CP26/35: Fair redemption terms for authorised funds investing in illiquid assets\nConsultation opens 08/10/2026. Consultation closes 11/12/2026.\nWe’re consulting on changes to retail investment fund rules so that a fund’s redemption terms reflect the time it typically takes to sell illiquid assets.\nWhy we are consulting\nWe want to set clear standards for how firms design and operate their investment products and reduce the risk of people buying unsuitable products. Our proposals will also align these rules with new international standards.\nNext steps\nWe are asking for comments on this Consultation Paper by 11 December 2026.\nFollowing this consultation, we will consider the responses and expect to publish final rules in H1 2027."
+    },
+    {
+      "id": "fca-cp26-34",
+      "regulator": "FCA",
+      "type": "Consultation paper",
+      "title": "CP26/34: Preparing for the new transaction reporting regime",
+      "url": "https://www.fca.org.uk/publications/consultation-papers/cp26-34-preparing-new-transaction-reporting-regime",
+      "published": "2026-10-02",
+      "text": "CP26/34: Preparing for the new transaction reporting regime\nConsultation opens 02/10/2026. Consultation closes 06/11/2026.\nWe’re consulting on guidance, consequential amendments and transitional provisions to help firms prepare for the new transaction reporting regime.\nWe have published our draft schema and validation rules to help firms prepare for 3 April 2028.\nWho this is for\nThis consultation will be of interest to:\nInvestment firms\nOperators of trading venues\nApproved reporting mechanisms\nTrade associations\nOther market participants involved in submitting transaction reports, instrument reference data or order book data\nNext steps\nPlease send us your comments by 6 November 2026."
+    },
+    {
+      "id": "fca-gc26-7",
+      "regulator": "FCA",
+      "type": "Guidance consultation",
+      "title": "GC26/7: Decentralised finance guidance (DeFi)",
+      "url": "https://www.fca.org.uk/publications/guidance-consultations/gc26-7-decentralised-finance-guidance",
+      "published": "2026-10-21",
+      "text": "GC26/7: Decentralised finance guidance (DeFi)\nGuidance Consultation opens 21/10/2026. Guidance Consultation closes 18/11/2026.\nWe’re consulting on non-Handbook guidance to help firms providing financial services using decentralised finance (DeFi) comply with our rules on operational resilience and financial crime, and with the Money Laundering Regulations (MLRs).\nWhy we are consulting\nOur guidance covers observations on the current risk landscape relevant to DeFi. It focuses on operational resilience and financial crime risks, and provides illustrative examples of measures firms may wish to consider.\nFirms using DeFi should do so safely and responsibly, as with other technologies. Its features can expose firms and their clients to increased operational resilience and financial crime risks.\nFrom 25 October 2027, the Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026 will bring new cryptoasset activities into our regulatory perimeter."
+    }
+  ],
+  "triage": [
+    {
+      "pubId": "fca-annex1-restrictions",
+      "relevant": true,
+      "urgency": "medium",
+      "topics": [
+        "AML",
+        "Due Diligence",
+        "Financial Crime",
+        "Annex 1"
+      ],
+      "summary": "FCA warns and restricts unregulated lenders over AML failures, urging regulated firms to conduct enhanced due diligence on such partners.",
+      "reason": "It mandates enhanced due diligence on Annex 1 partners, affecting our partner onboarding and monitoring processes.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "ico-agentic-ai-cfe",
+      "relevant": true,
+      "urgency": "medium",
+      "topics": [
+        "AI",
+        "Data Protection",
+        "Agentic AI",
+        "Collections"
+      ],
+      "summary": "ICO seeks views on data protection implications of agentic AI, affecting the firm's AI-driven collections tool.",
+      "reason": "Directly impacts AI collections assistant, requiring policy updates on data use and transparency.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "fca-cp26-38",
+      "relevant": true,
+      "urgency": "medium",
+      "topics": [
+        "financial crime",
+        "AML",
+        "consultation",
+        "cryptoassets"
+      ],
+      "summary": "FCA consults on Financial Crime Guide updates affecting AML and crypto rules.",
+      "reason": "Impacts AML controls and cryptoasset policies for regulated lenders.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "ico-guidance-pipeline-tech",
+      "relevant": true,
+      "urgency": "medium",
+      "topics": [
+        "AI governance",
+        "Data protection",
+        "Automated decision-making",
+        "Consumer credit regulation"
+      ],
+      "summary": "ICO's upcoming AI and ADM guidance may affect Northbridge's credit scoring, collections messaging, and data handling practices.",
+      "reason": "Guidance on AI, ADM, and data protection directly impacts the firm's credit decision and collections processes.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "pra-cp13-26",
+      "relevant": false,
+      "urgency": "low",
+      "topics": [
+        "regulatory thresholds",
+        "PRA consultation",
+        "automatic increases",
+        "proportionality"
+      ],
+      "summary": "PRA consultation on automatic threshold updates not applicable to FCA-regulated firm.",
+      "reason": "PRA rules target PRA‑authorised banks, insurers, credit unions; Northbridge is only FCA‑regulated.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "fca-cp26-37",
+      "relevant": true,
+      "urgency": "medium",
+      "topics": [
+        "SM&CR",
+        "Senior Managers",
+        "Regulatory Reform",
+        "Compliance"
+      ],
+      "summary": "FCA consults on SM&CR reforms that may alter senior management duties and certification requirements for firms like Northbridge.",
+      "reason": "Consultation affects firms in scope; potential changes to responsibilities and reporting could impact policies and processes.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "boe-fca-ai-survey-2026",
+      "relevant": true,
+      "urgency": "low",
+      "topics": [
+        "AI governance",
+        "third‑party AI risk",
+        "model risk management",
+        "frontier AI"
+      ],
+      "summary": "FCA/Bank of England AI report stresses oversight of third‑party AI models and validation requirements for financial firms.",
+      "reason": "Impacts oversight of third‑party AI used in credit scoring and collections, requiring policy updates.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "pra-cp14-26",
+      "relevant": false,
+      "urgency": "medium",
+      "topics": [
+        "SM&CR",
+        "consultation",
+        "PRA",
+        "regulatory reform"
+      ],
+      "summary": "PRA consultation on SM&CR reforms not applicable to FCA‑regulated Northbridge.",
+      "reason": "PRA rules apply only to PRA‑authorised banks, insurers, etc., not to this FCA‑regulated firm.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "fca-cp26-34",
+      "relevant": false,
+      "urgency": "medium",
+      "topics": [],
+      "summary": "Consultation on transaction reporting not applicable to Northbridge's consumer credit activities.",
+      "reason": "Firm is not an investment firm or market participant covered by the regime.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "fca-cp26-35",
+      "relevant": false,
+      "urgency": "medium",
+      "topics": [
+        "fund redemption",
+        "illiquid assets",
+        "investment regulation",
+        "consultation"
+      ],
+      "summary": "FCA consultation on fund redemption terms does not affect Northbridge's consumer credit lending activities.",
+      "reason": "Northbridge is a lender, not a regulated fund, so the rules do not apply.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    },
+    {
+      "pubId": "fca-gc26-7",
+      "relevant": false,
+      "urgency": "low",
+      "topics": [],
+      "summary": "FCA consults on DeFi guidance, unrelated to Northbridge's lending activities.",
+      "reason": "Firm does not engage in cryptoassets or DeFi services, so guidance does not affect them.",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"
+    }
+  ],
+  "assessments": [
+    {
+      "pubId": "ico-agentic-ai-cfe",
+      "headline": "ICO agentic AI consultation requires Northbridge to review Nudge governance and data protection readiness",
+      "noImpactReason": "",
+      "impacts": [
+        {
+          "id": "ico-agentic-ai-cfe::0",
+          "pubId": "ico-agentic-ai-cfe",
+          "policyId": "POL-AI",
+          "controlIds": [
+            "C-AI-01",
+            "C-AI-02",
+            "C-AI-03"
+          ],
+          "impactType": "direct",
+          "gap": "POL-AI governs the Nudge agentic AI pilot but does not yet reflect ICO's emerging expectations on agentic AI autonomy, transparency, and fairness under data protection law.",
+          "action": "Review POL-AI against ICO consultation themes (Sections 2–7) and prepare a formal response by the deadline; update model risk tier and validation requirements for M4 if needed.",
+          "severity": "medium",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2026-11-20",
+          "dueBasis": "ICO call for evidence response deadline",
+          "quote": "The Information Commissioner's Office is calling for evidence to inform our thinking on how to apply data protection law to the distinctive capabilities and risks of agentic AI.",
+          "rationale": "Northbridge operates an agentic AI collections assistant (Nudge) processing personal data; the ICO consultation will shape future guidance that directly affects model governance and compliance.",
+          "verified": true
+        },
+        {
+          "id": "ico-agentic-ai-cfe::1",
+          "pubId": "ico-agentic-ai-cfe",
+          "policyId": "POL-DATA",
+          "controlIds": [
+            "C-DAT-01",
+            "C-DAT-02",
+            "C-DAT-03"
+          ],
+          "impactType": "direct",
+          "gap": "The Nudge pilot DPIA (approved March 2026) may not cover all data protection considerations the ICO is consulting on for agentic AI, such as purpose limitation, automated decision-making transparency, and data security for autonomous agents.",
+          "action": "Assess the pilot DPIA against ICO consultation questions; plan a full DPIA update before any Nudge scale-up and feed findings into the quarterly DPIA register review.",
+          "severity": "medium",
+          "owner": "Data Protection Officer",
+          "dueDate": "2026-11-20",
+          "dueBasis": "ICO call for evidence response deadline",
+          "quote": "The Information Commissioner's Office is calling for evidence to inform our thinking on how to apply data protection law to the distinctive capabilities and risks of agentic AI.",
+          "rationale": "The consultation directly targets data protection law application to agentic AI, which is the legal basis for POL-DATA's DPIA requirements and privacy notice obligations for Nudge.",
+          "verified": true
+        }
+      ],
+      "rejected": [],
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b"
+    },
+    {
+      "pubId": "fca-annex1-restrictions",
+      "headline": "FCA action on Annex 1 firms demands independent due diligence on non-authorised introducers",
+      "noImpactReason": "",
+      "impacts": [
+        {
+          "id": "fca-annex1-restrictions::0",
+          "pubId": "fca-annex1-restrictions",
+          "policyId": "POL-INTRO",
+          "controlIds": [
+            "C-INT-01",
+            "C-INT-02",
+            "C-INT-03"
+          ],
+          "impactType": "direct",
+          "gap": "MLR registration status of non-authorised introducers is taken from the introducer's self-declaration and is not independently verified (2025 internal audit open finding).",
+          "action": "Replace self-declaration reliance with independent verification of MLR registration status for all non-authorised introducers; update onboarding and annual attestation to require documented evidence from FCA register or OFSI list.",
+          "severity": "high",
+          "owner": "Head of Partnerships",
+          "dueDate": "2027-01-21",
+          "dueBasis": "No explicit deadline in publication; 90-day review period applied from 2026-10-23 press release.",
+          "quote": "when dealing with Annex 1 firms, they must carry out due diligence to understand the firm's business, in accordance with legislative requirements. This includes seeking direct confirmation from the firm of its registration status, conducting independent checks of the information it provides, and understanding and managing any risks.",
+          "rationale": "The FCA explicitly requires regulated firms to independently verify Annex 1 firms' registration status and information. Northbridge's 60 introducers include non-authorised asset-finance firms that are likely Annex 1 MLR registrants; the current self-declaration control gap is directly exposed by this enforcement action.",
+          "verified": true
+        },
+        {
+          "id": "fca-annex1-restrictions::1",
+          "pubId": "fca-annex1-restrictions",
+          "policyId": "POL-AML",
+          "controlIds": [
+            "C-AML-01",
+            "C-AML-02"
+          ],
+          "impactType": "second-order",
+          "gap": "Business-wide risk assessment (C-AML-01) does not explicitly address heightened risk from introducers that are Annex 1 firms; transaction monitoring rules (C-AML-02) do not reference introducer-type risk segmentation.",
+          "action": "Refresh the annual business-wide risk assessment to include a specific Annex 1 introducer risk segment; update transaction monitoring rules to flag unusual patterns from introducers subject to FCA MLR supervision.",
+          "severity": "medium",
+          "owner": "MLRO (SMF17)",
+          "dueDate": "2027-01-21",
+          "dueBasis": "No explicit deadline in publication; 90-day review period applied from 2026-10-23 press release.",
+          "quote": "The FCA has also reminded regulated firms that, when dealing with Annex 1 firms, they must carry out due diligence to understand the firm's business, in accordance with legislative requirements.",
+          "rationale": "The FCA's information request to ~900 Annex 1 firms and warning of increased scrutiny means Northbridge must demonstrate it understands and manages ML risks from its Annex 1 introducer population in its own risk assessment and monitoring.",
+          "verified": true
+        },
+        {
+          "id": "fca-annex1-restrictions::2",
+          "pubId": "fca-annex1-restrictions",
+          "policyId": "POL-TPRM",
+          "controlIds": [
+            "C-TPR-01",
+            "C-TPR-03"
+          ],
+          "impactType": "second-order",
+          "gap": "Annual review of critical suppliers (C-TPR-01) and financial crime controls testing (C-TPR-03) do not currently treat non-authorised introducers as critical third parties requiring independent MLR status verification.",
+          "action": "Classify non-authorised introducers as critical third parties for AML purposes; enhance annual review and financial crime controls testing to include independent verification of their MLR registration and AML control effectiveness.",
+          "severity": "medium",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2027-01-21",
+          "dueBasis": "No explicit deadline in publication; 90-day review period applied from 2026-10-23 press release.",
+          "quote": "Registration under the Money Laundering Regulations is not a substitute for regulated firms carrying out their own appropriate due diligence.",
+          "rationale": "Introducers are key partners in the lending chain; the FCA's statement that MLR registration does not substitute for regulated firms' own due diligence extends third-party risk management obligations to cover introducer AML controls.",
+          "verified": true
+        }
+      ],
+      "rejected": [],
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b"
+    },
+    {
+      "pubId": "fca-cp26-38",
+      "headline": "FCA Financial Crime Guide consultation impacts AML, fraud, third-party controls",
+      "noImpactReason": "",
+      "impacts": [
+        {
+          "id": "fca-cp26-38::0",
+          "pubId": "fca-cp26-38",
+          "policyId": "POL-AML",
+          "controlIds": [
+            "C-AML-01",
+            "C-AML-02"
+          ],
+          "impactType": "direct",
+          "gap": "Policy follows the Financial Crime Guide as external standard; proposed updates to sanctions, proliferation financing (currently not separately assessed), ML/TF and systems/controls require refreshed business risk assessment and transaction monitoring rules.",
+          "action": "Review consultation proposals against current business risk assessment and transaction monitoring rules; prepare response by 24 December 2026 and plan policy updates for final Guide.",
+          "severity": "medium",
+          "owner": "MLRO (SMF17)",
+          "dueDate": "2026-12-24",
+          "dueBasis": "Consultation closes 24/12/2026 per CP26/38",
+          "quote": "We're proposing changes to the following areas: fraud cryptoassets – to reflect new regime from October 2027 financial and trade sanctions proliferation financing data security financial crime systems and controls money laundering and terrorist financing",
+          "rationale": "The Financial Crime Guide is explicitly referenced in POL-AML; multiple proposed updates directly affect its core domains including sanctions screening, proliferation financing gap, and ML/TF systems.",
+          "verified": true
+        },
+        {
+          "id": "fca-cp26-38::1",
+          "pubId": "fca-cp26-38",
+          "policyId": "POL-FRAUD",
+          "controlIds": [
+            "C-FRD-05"
+          ],
+          "impactType": "direct",
+          "gap": "Policy references the Financial Crime Guide fraud chapter as its external standard; proposed fraud chapter updates will require refresh of the fraud typologies library and potentially other fraud controls.",
+          "action": "Map consultation fraud proposals against current fraud typologies library and controls; submit feedback and schedule library update once final Guide published.",
+          "severity": "medium",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2026-12-24",
+          "dueBasis": "Consultation closes 24/12/2026 per CP26/38",
+          "quote": "We want firms to keep detecting, preventing and disrupting financial crime, so we can protect consumers and maintain trust in the financial system",
+          "rationale": "Fraud is the first-listed area of proposed Guide changes; POL-FRAUD explicitly adopts the Guide fraud chapter as its benchmark.",
+          "verified": true
+        },
+        {
+          "id": "fca-cp26-38::2",
+          "pubId": "fca-cp26-38",
+          "policyId": "POL-TPRM",
+          "controlIds": [
+            "C-TPR-01",
+            "C-TPR-03"
+          ],
+          "impactType": "second-order",
+          "gap": "Critical third parties (KYC vendor, sanctions screening vendor) supply financial crime controls; consultation highlights AI and third-party tools for financial crime controls as an emerging risk area not yet fully addressed in annual review or independent testing requirements.",
+          "action": "Enhance annual critical supplier review and independent testing programme to cover Guide expectations for AI/third-party financial crime tools; include in consultation response.",
+          "severity": "medium",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2026-12-24",
+          "dueBasis": "Consultation closes 24/12/2026 per CP26/38",
+          "quote": "firms have increasingly adopted AI and third-party tools for financial crime controls",
+          "rationale": "Northbridge relies on third-party KYC and sanctions screening vendors for core financial crime controls; the Guide update signals supervisory focus on oversight of such tools.",
+          "verified": true
+        }
+      ],
+      "rejected": [],
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b"
+    },
+    {
+      "pubId": "boe-fca-ai-survey-2026",
+      "headline": "BoE/FCA AI survey exposes vendor model oversight gaps",
+      "noImpactReason": "",
+      "impacts": [
+        {
+          "id": "boe-fca-ai-survey-2026::0",
+          "pubId": "boe-fca-ai-survey-2026",
+          "policyId": "POL-AI",
+          "controlIds": [
+            "C-AI-01",
+            "C-AI-02",
+            "C-AI-03"
+          ],
+          "impactType": "direct",
+          "gap": "Policy states 'Vendor models: Northbridge relies on vendor validation reports; independent validation of vendor models is not currently performed' and drift monitoring (C-AI-02) covers only M1/M2 monthly and M4 weekly QA, not independent validation or comprehensive third-party model oversight.",
+          "action": "Add independent validation requirement for vendor-supplied models (M1 credit scorecard, M4 LLM API) and extend drift monitoring to cover third-party model change control and versioning.",
+          "severity": "high",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2027-01-24",
+          "dueBasis": "90 days from publication date 2026-10-26 as no regulatory deadline specified",
+          "quote": "Applying model risk management principles to third-party or vendor-supplied models was the most frequently selected challenge (54%), followed by overseeing systems provided or materially influenced by third parties (49%).",
+          "rationale": "The survey identifies vendor model oversight as the top governance challenge (54%), directly exposing Northbridge's reliance on vendor assurance without independent validation for M1 and M4.",
+          "verified": true
+        },
+        {
+          "id": "boe-fca-ai-survey-2026::1",
+          "pubId": "boe-fca-ai-survey-2026",
+          "policyId": "POL-TPRM",
+          "controlIds": [
+            "C-TPR-01",
+            "C-TPR-03"
+          ],
+          "impactType": "second-order",
+          "gap": "C-TPR-03 only requires annual testing of financial crime controls from third parties; it does not extend to AI model governance for the LLM API provider (critical third party) or credit bureau scorecard vendor.",
+          "action": "Expand annual critical supplier reviews (C-TPR-01) to include AI model risk management assessment for LLM API provider and credit bureau vendor, aligning with POL-AI requirements.",
+          "severity": "medium",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2027-01-24",
+          "dueBasis": "90 days from publication date 2026-10-26 as no regulatory deadline specified",
+          "quote": "Overseeing systems provided or materially influenced by third parties was selected by 49%.",
+          "rationale": "Nearly half of firms report challenges overseeing third-party-influenced systems; Northbridge's LLM API provider and credit bureau are critical third parties whose AI systems need oversight beyond financial crime controls.",
+          "verified": true
+        },
+        {
+          "id": "boe-fca-ai-survey-2026::2",
+          "pubId": "boe-fca-ai-survey-2026",
+          "policyId": "POL-INFOSEC",
+          "controlIds": [
+            "C-SEC-01",
+            "C-SEC-02"
+          ],
+          "impactType": "second-order",
+          "gap": "Annual penetration test (C-SEC-01) and quarterly access reviews (C-SEC-02) do not explicitly address frontier AI-driven cyber threats or AI-enhanced attack vectors.",
+          "action": "Update penetration testing scope and access review criteria to include AI-specific threat scenarios (e.g., prompt injection, model extraction, AI-generated phishing) for systems using third-party AI (Nudge, KYC vendor).",
+          "severity": "medium",
+          "owner": "Chief Technology Officer",
+          "dueDate": "2027-01-24",
+          "dueBasis": "90 days from publication date 2026-10-26 as no regulatory deadline specified",
+          "quote": "Most firms expected frontier AI cyber capabilities to become material to their risk profiles. 88% of respondents assessed evolving frontier AI cyber capabilities over the next two years as having a moderate or high impact on their firm's risk profile.",
+          "rationale": "The survey signals a near-consensus that AI-enhanced cyber risk will be material within two years; Northbridge's AI-assisted collections (Nudge) and vendor AI systems expand the attack surface.",
+          "verified": true
+        }
+      ],
+      "rejected": [],
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b"
+    },
+    {
+      "pubId": "fca-cp26-37",
+      "headline": "FCA SM&CR Phase 2 consultation proposes regime simplification affecting Northbridge governance",
+      "noImpactReason": "",
+      "impacts": [
+        {
+          "id": "fca-cp26-37::0",
+          "pubId": "fca-cp26-37",
+          "policyId": "POL-GOV",
+          "controlIds": [
+            "C-GOV-01",
+            "C-GOV-02",
+            "C-GOV-03"
+          ],
+          "impactType": "direct",
+          "gap": "Policy requires annual certification cycle (C-GOV-01), six-monthly Statements of Responsibilities reviews (C-GOV-02), and Conduct Rules training completion above 98% (C-GOV-03); consultation proposes removing Certification Regime, ending ongoing Statements of Responsibilities and Management Responsibilities Map submissions, and simplifying Conduct Rule training.",
+          "action": "Review consultation proposals against POL-GOV controls, prepare formal response by 22 January 2027, and draft policy updates for implementation upon final rules in H1 2027.",
+          "severity": "medium",
+          "owner": "CEO (SMF1)",
+          "dueDate": "2027-01-22",
+          "dueBasis": "Consultation close date per CP26/37",
+          "quote": "Changes proposed in the Financial Services and Markets (FSM) Bill remove many prescriptive SM&CR requirements from legislation and make regulators responsible for deciding how these should apply in their rules.",
+          "rationale": "The consultation proposes fundamental changes to SM&CR including removal of Certification Regime, ongoing Statements of Responsibilities submissions, and simplified Conduct Rules, all directly affecting POL-GOV controls C-GOV-01, C-GOV-02, C-GOV-03 and the Management Responsibilities Map process.",
+          "verified": true
+        }
+      ],
+      "rejected": [],
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b"
+    },
+    {
+      "pubId": "ico-guidance-pipeline-tech",
+      "headline": "ICO technology guidance plan signals upcoming agentic AI and ADM rules affecting Nudge and credit decisions",
+      "noImpactReason": "",
+      "impacts": [
+        {
+          "id": "ico-guidance-pipeline-tech::0",
+          "pubId": "ico-guidance-pipeline-tech",
+          "policyId": "POL-AI",
+          "controlIds": [
+            "C-AI-01",
+            "C-AI-02",
+            "C-AI-03"
+          ],
+          "impactType": "direct",
+          "gap": "Policy governs Nudge (M4) but lacks reference to ICO agentic AI or foundation model guidance expectations for governance, transparency, and vendor oversight.",
+          "action": "Monitor ICO agentic AI and foundation model consultations; schedule POL-AI review upon final guidance publication in Autumn 2026.",
+          "severity": "medium",
+          "owner": "Chief Risk Officer",
+          "dueDate": "2026-11-30",
+          "dueBasis": "ICO plans final Agentic AI and Foundation Models guidance for Autumn 2026 publication.",
+          "quote": "Agentic AI guidance Stage: Drafting Public consultation: Yes (due to launch September 2026) Final version of guidance due for publication: Autumn 2026",
+          "rationale": "Northbridge's Nudge pilot is an agentic AI system using a foundation model via LLM API provider; imminent ICO guidance will set compliance expectations for such systems.",
+          "verified": true
+        },
+        {
+          "id": "ico-guidance-pipeline-tech::1",
+          "pubId": "ico-guidance-pipeline-tech",
+          "policyId": "POL-DATA",
+          "controlIds": [
+            "C-DAT-01",
+            "C-DAT-02",
+            "C-DAT-03"
+          ],
+          "impactType": "direct",
+          "gap": "Policy addresses ADM and DPIA but does not yet reflect upcoming ICO ADM/Profiling guidance updated for Data (Use and Access) Act 2025 amendments.",
+          "action": "Track final ICO ADM guidance publication; update DPIA register and privacy notice to align with new profiling and automated decision-making requirements.",
+          "severity": "medium",
+          "owner": "Data Protection Officer",
+          "dueDate": "2027-01-31",
+          "dueBasis": "ICO plans final ADM and Profiling guidance for Winter 2026 publication.",
+          "quote": "Automated Decision Making (ADM) and Profiling Guidance update Guidance on automated decision-making and profiling including amendments in the Data (Use and Access) Act Stage: Drafting Public consultation: Yes (Closed) Final version of guidance due for publication: Winter 2026",
+          "rationale": "Northbridge uses automated credit decisions (M1, M2) and Nudge automated communications; updated ICO guidance will affect GDPR Article 22 compliance and DPIA scope.",
+          "verified": true
+        }
+      ],
+      "rejected": [],
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b"
+    }
+  ],
+  "calls": [
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 1307,
+      "completionTokens": 594,
+      "latencyMs": 4396,
+      "costUsd": 0.00022098000000000002,
+      "note": "FCA restricts 6 firms following concerns over anti-money laundering controls",
+      "id": 1
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 814,
+      "completionTokens": 602,
+      "latencyMs": 4495,
+      "costUsd": 0.00019332,
+      "note": "Agentic AI call for evidence",
+      "id": 2
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 1117,
+      "completionTokens": 775,
+      "latencyMs": 5482,
+      "costUsd": 0.00025301999999999996,
+      "note": "CP26/38: Financial Crime Guide updates",
+      "id": 3
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 896,
+      "completionTokens": 987,
+      "latencyMs": 6650,
+      "costUsd": 0.00029064,
+      "note": "ICO plans for new and updated guidance: Technology",
+      "id": 4
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 908,
+      "completionTokens": 457,
+      "latencyMs": 2683,
+      "costUsd": 0.00016416,
+      "note": "Regulatory thresholds set to shift to automatic increases (CP13/26)",
+      "id": 5
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 1118,
+      "completionTokens": 683,
+      "latencyMs": 3998,
+      "costUsd": 0.000231,
+      "note": "CP26/37: Senior Managers and Certification Regime (SM&CR) Review: Phase 2",
+      "id": 6
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 877,
+      "completionTokens": 1093,
+      "latencyMs": 6178,
+      "costUsd": 0.00031494,
+      "note": "Artificial intelligence in UK financial services - 2026",
+      "id": 7
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 886,
+      "completionTokens": 864,
+      "latencyMs": 4816,
+      "costUsd": 0.00026052,
+      "note": "CP14/26 – Review of the Senior Managers and Certification Regime (SM&CR) – Phase 2",
+      "id": 8
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 751,
+      "completionTokens": 586,
+      "latencyMs": 3187,
+      "costUsd": 0.0001857,
+      "note": "CP26/34: Preparing for the new transaction reporting regime",
+      "id": 9
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 773,
+      "completionTokens": 658,
+      "latencyMs": 3593,
+      "costUsd": 0.00020429999999999998,
+      "note": "CP26/35: Fair redemption terms for authorised funds investing in illiquid assets",
+      "id": 10
+    },
+    {
+      "stage": "triage",
+      "provider": "token-factory",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "promptTokens": 806,
+      "completionTokens": 306,
+      "latencyMs": 1594,
+      "costUsd": 0.00012179999999999999,
+      "note": "GC26/7: Decentralised finance guidance (DeFi)",
+      "id": 11
+    },
+    {
+      "stage": "assess",
+      "provider": "token-factory",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "promptTokens": 4591,
+      "completionTokens": 2152,
+      "latencyMs": 7225,
+      "costUsd": 0.011047,
+      "note": "Agentic AI call for evidence",
+      "id": 12
+    },
+    {
+      "stage": "assess",
+      "provider": "token-factory",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "promptTokens": 5084,
+      "completionTokens": 2259,
+      "latencyMs": 7363,
+      "costUsd": 0.011861,
+      "note": "FCA restricts 6 firms following concerns over anti-money laundering controls",
+      "id": 13
+    },
+    {
+      "stage": "assess",
+      "provider": "token-factory",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "promptTokens": 4894,
+      "completionTokens": 2780,
+      "latencyMs": 9531,
+      "costUsd": 0.013234,
+      "note": "CP26/38: Financial Crime Guide updates",
+      "id": 14
+    },
+    {
+      "stage": "assess",
+      "provider": "token-factory",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "promptTokens": 4654,
+      "completionTokens": 2330,
+      "latencyMs": 7591,
+      "costUsd": 0.011644,
+      "note": "Artificial intelligence in UK financial services - 2026",
+      "id": 15
+    },
+    {
+      "stage": "assess",
+      "provider": "token-factory",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "promptTokens": 4895,
+      "completionTokens": 2152,
+      "latencyMs": 6686,
+      "costUsd": 0.011351,
+      "note": "CP26/37: Senior Managers and Certification Regime (SM&CR) Review: Phase 2",
+      "id": 16
+    },
+    {
+      "stage": "assess",
+      "provider": "token-factory",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "promptTokens": 4673,
+      "completionTokens": 4555,
+      "latencyMs": 13351,
+      "costUsd": 0.018338,
+      "note": "ICO plans for new and updated guidance: Technology",
+      "id": 17
+    }
+  ],
+  "finishedAt": "2026-10-27T10:31:16.317Z"
+}

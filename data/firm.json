@@ -1,0 +1,7 @@
+{
+  "_note": "Fictional firm for demonstration. Any resemblance to a real company is coincidental. No client data.",
+  "name": "Northbridge Business Finance Ltd",
+  "short": "Northbridge",
+  "profile": "Manchester-based SME lender. FCA-authorised for consumer credit lending (regulated loans up to £25,000 to sole traders and small partnerships under the Consumer Credit Act) and also lends unregulated term loans of £25,000–£500,000 to limited companies. Around 4,200 live loans. Not PRA-regulated and not a deposit taker. Applications arrive direct and through about 60 introducers (commercial finance brokers and some asset-finance firms). Uses a credit bureau scorecard and an in-house rules engine for automated credit decisions, a third-party KYC and sanctions screening vendor, and is piloting 'Nudge', an LLM-based agentic collections assistant that messages customers in early arrears and proposes payment plans. SM&CR core firm.",
+  "owners": ["Head of Compliance (SMF16)", "MLRO (SMF17)", "Chief Risk Officer", "Head of Credit", "Head of Collections", "Head of Customer Operations", "Data Protection Officer", "Chief Technology Officer", "Head of Partnerships", "Head of Marketing", "CEO (SMF1)"]
+}

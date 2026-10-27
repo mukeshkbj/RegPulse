@@ -1,0 +1,25 @@
+{
+  "name": "regpulse",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RegPulse: regulatory change impact agent on Nebius Token Factory with NVIDIA Nemotron and Tavily",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check-models": "node scripts/check-models.mjs",
+    "voiceover": "node scripts/voiceover.mjs"
+  },
+  "dependencies": {
+    "next": "15.5.28",
+    "react": "19.1.10",
+    "react-dom": "19.1.10"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}
