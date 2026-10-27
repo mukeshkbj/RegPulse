@@ -1,9 +1,9 @@
 import { config } from './config';
-import { CORPUS, FIRM, LIBRARY, libraryAsContext } from './data';
+import { CORPUS, FIRM, LIBRARY, fullLibrary, libraryAsContext } from './data';
 import { chat, chatJson, pool, Telemetry } from './llm';
 import { mockAssess, mockChat, mockTicket, mockTriage } from './mock';
 import { sweep as tavilySweep } from './tavily';
-import type { Assessment, Impact, Publication, RunResult, SweepEvent, Ticket, Triage, Urgency } from './types';
+import type { Assessment, Impact, PolicyDoc, Publication, RunResult, SweepEvent, Ticket, Triage } from './types';
 import { asUrg, verifyImpacts, type RawImpact } from './verify';
 export { quoteInSource, normalise } from './verify';
 
@@ -11,8 +11,8 @@ const today = () => new Date().toISOString().slice(0, 10);
 
 // ---------- Stage 1: triage with the fast model ----------
 
-const TRIAGE_SYSTEM = () => `You are a regulatory triage analyst for ${FIRM.name}.
-Firm profile: ${FIRM.profile}
+const TRIAGE_SYSTEM = (custom: PolicyDoc[] = []) => `You are a regulatory triage analyst for ${FIRM.name}.
+Firm profile: ${FIRM.profile}${custom.length ? `\nThe firm has also added these policies of its own, so publications touching their topics are relevant too: ${custom.map((d) => d.title).join('; ')}.` : ''}
 
 Decide whether a regulatory publication could require any change to this firm's policies, processes, controls, systems or customer journeys.
 Count indirect effects (for example guidance on AI, data protection or third parties that affects tools the firm uses, or action against other lenders that changes the due diligence this firm must do on partners).
@@ -27,7 +27,7 @@ function pubBlock(p: Publication, max: number) {
   return `Regulator: ${p.regulator}\nType: ${p.type}\nTitle: ${p.title}\nPublished: ${p.published}\nURL: ${p.url}\n\n${p.text.slice(0, max)}`;
 }
 
-export async function triage(p: Publication, t: Telemetry): Promise<Triage> {
+export async function triage(p: Publication, t: Telemetry, custom: PolicyDoc[] = []): Promise<Triage> {
   const cfg = config();
   if (cfg.mock) return mockTriage(p, t);
   const j = await chatJson<{ relevant: boolean; urgency: string; topics: string[]; summary: string; reason: string }>({
@@ -38,7 +38,7 @@ export async function triage(p: Publication, t: Telemetry): Promise<Triage> {
     maxTokens: 2048,
     note: p.title,
     messages: [
-      { role: 'system', content: TRIAGE_SYSTEM() },
+      { role: 'system', content: TRIAGE_SYSTEM(custom) },
       { role: 'user', content: pubBlock(p, 6000) },
     ],
   });
@@ -55,11 +55,11 @@ export async function triage(p: Publication, t: Telemetry): Promise<Triage> {
 
 // ---------- Stage 2: impact assessment with the reasoning model ----------
 
-const ASSESS_SYSTEM = () => `You are a senior regulatory change analyst at ${FIRM.name}. Today is ${today()}.
+const ASSESS_SYSTEM = (lib: PolicyDoc[] = LIBRARY) => `You are a senior regulatory change analyst at ${FIRM.name}. Today is ${today()}.
 Map the regulatory publication you are given to the firm's own policy library below. For each policy that needs to change, write one impact.
 
 Rules:
-- Cite only policy IDs and control IDs that exist in the library. Valid policy IDs: ${LIBRARY.map((d) => d.id).join(', ')}.
+- Cite only policy IDs and control IDs that exist in the library. Valid policy IDs: ${lib.map((d) => d.id).join(', ')}.${lib.some((d) => d.id.startsWith('MY-')) ? ' Policies with IDs starting MY- were added by the user: assess them exactly like the others.' : ''}
 - At most ONE impact per policy. If several points hit the same policy, combine them into that one impact and list all the controls.
 - "quote" must be copied word for word, character for character, from ONE contiguous passage of the publication text: 8 to 40 words. Never paraphrase, never join separate sentences or list items. Pick the sentence that states the substance (what firms must do or what is changing), not a date line or heading. Impacts without an exact quote are discarded automatically.
 - "impact_type": "direct" when the publication addresses the policy's own topic; "second-order" when the effect arrives indirectly (for example AI or data guidance that affects a tool used in collections, or action against other firms that changes the due diligence ${FIRM.short} must do on its partners). Look hard for second-order effects; they are the ones people miss. When a publication touches a system, model or supplier (for example the Nudge assistant M4, the scorecard M1 or the screening vendors), also check the business process or customer journey that uses it (for example PROC-COLL, where Nudge talks to customers in arrears, or POL-CREDIT for automated decisions).
@@ -80,9 +80,9 @@ FIRM PROFILE
 ${FIRM.profile}
 
 POLICY LIBRARY
-${libraryAsContext()}`;
+${libraryAsContext(lib)}`;
 
-export async function assess(p: Publication, t: Telemetry): Promise<Assessment> {
+export async function assess(p: Publication, t: Telemetry, lib: PolicyDoc[] = LIBRARY): Promise<Assessment> {
   const cfg = config();
   if (cfg.mock) return mockAssess(p, t);
   const j = await chatJson<{ headline?: string; impacts?: RawImpact[]; no_impact_reason?: string }>({
@@ -93,18 +93,18 @@ export async function assess(p: Publication, t: Telemetry): Promise<Assessment> 
     maxTokens: 8192,
     note: p.title,
     messages: [
-      { role: 'system', content: ASSESS_SYSTEM() },
+      { role: 'system', content: ASSESS_SYSTEM(lib) },
       { role: 'user', content: pubBlock(p, 14000) },
     ],
   });
-  return verifyImpacts(p, j.impacts || [], cfg.reasoningModel, j.headline || p.title, j.no_impact_reason);
+  return verifyImpacts(p, j.impacts || [], cfg.reasoningModel, j.headline || p.title, j.no_impact_reason, lib);
 }
 
 // ---------- Change ticket ----------
 
-export async function draftTicket(impact: Impact, p: Publication, t: Telemetry): Promise<Ticket> {
+export async function draftTicket(impact: Impact, p: Publication, t: Telemetry, lib: PolicyDoc[] = LIBRARY): Promise<Ticket> {
   const cfg = config();
-  const doc = LIBRARY.find((d) => d.id === impact.policyId);
+  const doc = lib.find((d) => d.id === impact.policyId);
   if (cfg.mock) return mockTicket(impact, p, doc, t);
   const j = await chatJson<{ title: string; user_story: string; acceptance_criteria: string[]; tasks: string[]; priority: string; labels: string[] }>({
     tier: 'reasoning',
@@ -137,7 +137,7 @@ export async function draftTicket(impact: Impact, p: Publication, t: Telemetry):
 
 // ---------- Chat over results ----------
 
-export async function answer(question: string, run: RunResult, history: { role: 'user' | 'assistant'; content: string }[], t: Telemetry): Promise<string> {
+export async function answer(question: string, run: RunResult, history: { role: 'user' | 'assistant'; content: string }[], t: Telemetry, lib: PolicyDoc[] = LIBRARY): Promise<string> {
   const cfg = config();
   if (cfg.mock) return mockChat(question, run, t);
   const pubs = run.publications.map((p) => {
@@ -173,7 +173,7 @@ IMPACTS FOUND
 ${impacts.join('\n') || 'none'}
 
 POLICY LIBRARY
-${libraryAsContext()}
+${libraryAsContext(lib)}
 
 RELEVANT PUBLICATION TEXT
 ${relevantText}`,
@@ -187,8 +187,10 @@ ${relevantText}`,
 
 // ---------- Orchestrator ----------
 
-export async function runSweep(opts: { source: 'live' | 'corpus'; from: string; to: string }, emit: (e: SweepEvent) => void): Promise<RunResult> {
+export async function runSweep(opts: { source: 'live' | 'corpus'; from: string; to: string; custom?: PolicyDoc[] }, emit: (e: SweepEvent) => void): Promise<RunResult> {
   const cfg = config();
+  const custom = opts.custom || [];
+  const lib = fullLibrary(custom);
   const t = new Telemetry((c) => emit({ type: 'call', item: c }));
   const log = (msg: string, level: 'info' | 'warn' | 'ok' = 'info') => emit({ type: 'log', level, msg });
   const run: RunResult = {
@@ -201,7 +203,9 @@ export async function runSweep(opts: { source: 'live' | 'corpus'; from: string; 
     triage: [],
     assessments: [],
     calls: t.calls,
+    customPolicies: custom.length ? custom : undefined,
   };
+  if (custom.length) log(`Including ${custom.length} of your own polic${custom.length > 1 ? 'ies' : 'y'}: ${custom.map((d) => `${d.id} ${d.title}`).join(', ')}`);
   if (cfg.mock) log('No NEBIUS_API_KEY set: running in mock mode (heuristic stand-ins for Nemotron).', 'warn');
 
   // 1. Search + extract
@@ -223,7 +227,7 @@ export async function runSweep(opts: { source: 'live' | 'corpus'; from: string; 
   log(`Triage with ${cfg.mock ? 'mock' : cfg.triageModel} · ${run.publications.length} items, 4 in parallel`);
   await pool(run.publications, 4, async (p) => {
     try {
-      const tr = await triage(p, t);
+      const tr = await triage(p, t, custom);
       run.triage.push(tr);
       emit({ type: 'triage', item: tr });
     } catch (e) {
@@ -236,10 +240,10 @@ export async function runSweep(opts: { source: 'live' | 'corpus'; from: string; 
 
   // 3. Assess only relevant items with the reasoning model
   emit({ type: 'stage', stage: 'assess', status: 'active' });
-  log(`Impact assessment with ${cfg.mock ? 'mock' : cfg.reasoningModel} · ${relevant.length} items against ${LIBRARY.length} policies`);
+  log(`Impact assessment with ${cfg.mock ? 'mock' : cfg.reasoningModel} · ${relevant.length} items against ${lib.length} policies`);
   await pool(relevant, 3, async (p) => {
     try {
-      const a = await assess(p, t);
+      const a = await assess(p, t, lib);
       run.assessments.push(a);
       emit({ type: 'assessment', item: a });
       if (a.rejected.length) log(`Dropped ${a.rejected.length} uncited claim(s) for “${p.title}”`, 'warn');

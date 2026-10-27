@@ -96,6 +96,8 @@ export interface RunResult {
   triage: Triage[];
   assessments: Assessment[];
   calls: CallLog[];
+  /** Policies the visitor added with "Try your own policy" (IDs MY-1..MY-3). */
+  customPolicies?: PolicyDoc[];
 }
 
 export type SweepEvent =

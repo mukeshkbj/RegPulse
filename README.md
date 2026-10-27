@@ -41,7 +41,11 @@ RegPulse is built to catch exactly these.
 | 4. Verify citations | Rejects any impact whose quote is not in the source text verbatim, whose policy ID does not exist, or whose control ID is not in that policy | Deterministic code |
 | 5. Act | Evidence view shows the regulator's words highlighted next to the affected policy; **Draft change ticket** writes a user story with acceptance criteria; **Ask RegPulse** answers questions with citations | **Nemotron Ultra** |
 
-**Exports:** **Download CSV** gives the impact board for a spreadsheet or GRC tool. **Download Pega cases** gives one Pega DX API v2 create-case payload per impact, so findings can open regulatory-change cases in a Pega application. The case type ID is an example; map it to your own.
+**Try your own policy:** in **Policy library**, click **+ Add your own policy** and paste up to 3 policies of your own (or click **Fill in an example**). The next sweep reads every publication against them alongside Northbridge's library, and they can appear on the impact board, in tickets and in chat. They stay in your browser and are sent only with your own requests; the server caps their size before they reach any prompt.
+
+**Time saved, measured:** the 11 publication pages in the recorded run total 2,626 words. Just reading them takes about 11 minutes at the average adult reading speed of 238 words a minute ([Brysbaert, 2019](https://www.bps.org.uk/research-digest/most-comprehensive-review-date-finds-average-persons-reading-speed-slower)), before any mapping to 15 policies. RegPulse read, triaged, mapped and cited them in 33 seconds. The app works this out for every sweep. The full documents behind those pages (consultation PDFs) are far longer, so the real saving is larger.
+
+**Exports:** **Download CSV** gives the impact board for a spreadsheet or GRC tool. **Download Jira CSV** is laid out for Jira's CSV importer (one Task per impact, with priority, due date, labels and the evidence in the description). **Download Pega cases** gives one Pega DX API v2 create-case payload per impact, so findings can open regulatory-change cases in a Pega application. The case type ID is an example; map it to your own.
 
 **Public demo protection:** live sweeps are rate-limited per visitor (3 per hour) and per day. When a limit is reached, the app shows the recorded run instead of failing. Tune this with `SWEEPS_PER_HOUR_PER_VISITOR`, `SWEEPS_PER_DAY` (0 = recorded run only) and `CALLS_PER_HOUR_PER_VISITOR`.
 
@@ -57,7 +61,7 @@ From the recorded run in `data/recorded-run.json` (captured corpus, 1–27 Octob
 | Relevant after Nano triage | 6 (fund, transaction-reporting, DeFi and PRA-only items correctly excluded) |
 | Verified impacts | 14 across 8 policies: 2 high priority, 5 second-order |
 | Uncited claims dropped | 0 (an earlier, untuned run dropped 4, including an invented policy ID) |
-| Wall time | 33 seconds |
+| Wall time | 33 seconds (just reading the 11 pages takes ~11 minutes) |
 | Model cost | $0.08 in total: triage $0.0024 for 11 Nano calls, assessment $0.078 for 6 Ultra calls |
 | Triage saving from routing | 93% compared with running triage on Ultra |
 

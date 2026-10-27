@@ -28,6 +28,28 @@ const STAGES: { key: StageKey; name: string; sub: (s: Status | null) => string }
 ];
 
 const SEV_ORDER = { high: 0, medium: 1, low: 2 } as const;
+/** Average adult silent reading speed: 238 words per minute (Brysbaert, 2019 review of 190 studies). */
+const READING_WPM = 238;
+const CUSTOM_KEY = 'regpulse.customPolicies.v1';
+const EXAMPLE_POLICY = {
+  title: 'Customer Service Chatbot Standard',
+  owner: 'Head of Customer Operations',
+  body: `Purpose: govern "Ask Northbridge", the chatbot on our website and app that answers borrower questions about balances, payment dates, fees and hardship options.
+
+How it works: the chatbot uses a third-party large language model through an API. It can look up a customer's account, book a callback and update contact details. It does not approve or decline credit.
+
+Rules:
+- Customers are told they are talking to an automated assistant and can ask for a person at any time.
+- The chatbot must hand over to a person when it detects signs of financial difficulty or vulnerability.
+- It must not make the final decision on any forbearance request.
+- Conversations are logged for 12 months.
+- A data protection impact assessment has not yet been completed for the account look-up feature.
+
+Controls:
+- C-BOT-01 Monthly quality review of 30 sampled conversations.
+- C-BOT-02 Hand-over to a person on request or on vulnerability signals, tested quarterly.
+- C-BOT-03 Any change to the vendor model or prompts approved by the CTO before release.`,
+};
 
 function shortModel(m?: string) {
   return (m || '').split('/').pop() || '';
@@ -78,6 +100,18 @@ export default function Home() {
   const [sevFilter, setSevFilter] = useState<'all' | 'high' | 'medium' | 'low'>('all');
   const [secondOnly, setSecondOnly] = useState(false);
   const [libSel, setLibSel] = useState<string>('POL-INTRO');
+  const [customPolicies, setCustomPolicies] = useState<PolicyDoc[]>([]);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(CUSTOM_KEY);
+      if (raw) setCustomPolicies(JSON.parse(raw));
+    } catch { /* storage unavailable: start empty */ }
+  }, []);
+  const saveCustom = (list: PolicyDoc[]) => {
+    const withIds = list.slice(0, 3).map((d, i) => ({ ...d, id: `MY-${i + 1}` }));
+    setCustomPolicies(withIds);
+    try { localStorage.setItem(CUSTOM_KEY, JSON.stringify(withIds)); } catch { /* ignore */ }
+  };
   const [extraCalls, setExtraCalls] = useState<CallLog[]>([]);
 
   useEffect(() => {
@@ -93,7 +127,7 @@ export default function Home() {
 
   const pubById = useMemo(() => new Map(run.publications.map((p) => [p.id, p])), [run.publications]);
   const triageById = useMemo(() => new Map(run.triage.map((t) => [t.pubId, t])), [run.triage]);
-  const policyById = useMemo(() => new Map((status?.library || []).map((d) => [d.id, d])), [status]);
+  const policyById = useMemo(() => new Map([...(status?.library || []), ...(run.customPolicies || customPolicies)].map((d) => [d.id, d])), [status, run.customPolicies, customPolicies]);
   const allImpacts = useMemo(() => run.assessments.flatMap((a) => a.impacts), [run.assessments]);
   const rejectedCount = useMemo(() => run.assessments.reduce((s, a) => s + a.rejected.length, 0), [run.assessments]);
   const calls = useMemo(() => [...run.calls, ...extraCalls], [run.calls, extraCalls]);
@@ -112,7 +146,7 @@ export default function Home() {
     setTab('board');
     const t0 = Date.now();
     try {
-      const res = await fetch('/api/sweep', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ source, from, to }) });
+      const res = await fetch('/api/sweep', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ source, from, to, customPolicies }) });
       if (res.status === 429) {
         const j = await res.json().catch(() => ({}));
         setNotice(`${j.error || 'Live sweeps are limited on this demo.'} Showing the recorded run instead.`);
@@ -171,6 +205,9 @@ export default function Home() {
   const totalCost = calls.reduce((s, c) => s + c.costUsd, 0);
   const hasRun = run.publications.length > 0;
   const finished = !!run.finishedAt;
+  const words = run.publications.reduce((n, p) => n + p.text.split(/\s+/).filter(Boolean).length, 0);
+  const readMinutes = Math.round(words / READING_WPM);
+  const sweepSeconds = run.finishedAt && run.startedAt ? Math.round((Date.parse(run.finishedAt) - Date.parse(run.startedAt)) / 1000) : 0;
 
   return (
     <div className="shell">
@@ -228,7 +265,7 @@ export default function Home() {
         {error && <div className="banner error">{error}</div>}
         {notice && <div className="banner">{notice}</div>}
 
-        <Verdict hasRun={hasRun} running={running} finished={finished} firm={status?.firm.short || 'Northbridge'} scanned={run.publications.length} relevant={relevantCount} impacts={allImpacts.length} policies={affectedPolicies} high={highCount} second={secondCount} />
+        <Verdict hasRun={hasRun} running={running} finished={finished} firm={status?.firm.short || 'Northbridge'} scanned={run.publications.length} relevant={relevantCount} impacts={allImpacts.length} policies={affectedPolicies} high={highCount} second={secondCount} readMinutes={readMinutes} words={words} seconds={sweepSeconds} custom={(run.customPolicies || []).length} />
 
         {hasRun && (
           <div className="facts" aria-label="Sweep facts">
@@ -237,6 +274,7 @@ export default function Home() {
             <div className="fact"><b>{allImpacts.length}</b><span>verified impacts</span></div>
             <div className="fact"><b>{rejectedCount}</b><span>uncited claims dropped</span></div>
             <div className="fact"><b>{usd(totalCost)}</b><span>model cost{run.mock ? ' (estimate)' : ''}</span></div>
+            {finished && sweepSeconds > 0 && <div className="fact"><b>{sweepSeconds}s vs ~{readMinutes} min</b><span>this sweep vs just reading the pages</span></div>}
           </div>
         )}
 
@@ -244,7 +282,7 @@ export default function Home() {
           {([
             ['board', 'Impact board', allImpacts.length],
             ['pubs', 'Publications', run.publications.length],
-            ['library', 'Policy library', status?.library.length],
+            ['library', 'Policy library', (status?.library.length || 0) + customPolicies.length],
             ['telemetry', 'Models and cost', calls.length],
             ['ask', 'Ask RegPulse', undefined],
             ['log', 'Run log', logs.length],
@@ -263,7 +301,7 @@ export default function Home() {
             />
           )}
           {tab === 'pubs' && <Pubs pubs={run.publications} triageById={triageById} assessments={run.assessments} running={running} />}
-          {tab === 'library' && status && <Library docs={status.library} impacts={allImpacts} sel={libSel} setSel={setLibSel} />}
+          {tab === 'library' && status && <Library docs={status.library} custom={customPolicies} onSaveCustom={saveCustom} impacts={allImpacts} sel={libSel} setSel={setLibSel} />}
           {tab === 'telemetry' && status && <Telemetry calls={calls} status={status} mock={run.mock || status.mock} />}
           {tab === 'ask' && <Ask run={run} onCalls={(c) => setExtraCalls((x) => [...x, ...c])} />}
           {tab === 'log' && (
@@ -279,6 +317,7 @@ export default function Home() {
           impact={selected}
           pub={pubById.get(selected.pubId)!}
           policy={policyById.get(selected.policyId)}
+          customPolicies={run.customPolicies || []}
           onClose={() => setSelected(null)}
           onCalls={(c) => setExtraCalls((x) => [...x, ...c])}
         />
@@ -287,7 +326,7 @@ export default function Home() {
   );
 }
 
-function Verdict(p: { hasRun: boolean; running: boolean; finished: boolean; firm: string; scanned: number; relevant: number; impacts: number; policies: number; high: number; second: number }) {
+function Verdict(p: { hasRun: boolean; running: boolean; finished: boolean; firm: string; scanned: number; relevant: number; impacts: number; policies: number; high: number; second: number; readMinutes: number; words: number; seconds: number; custom: number }) {
   if (!p.hasRun) {
     return (
       <div className="verdict empty">
@@ -309,7 +348,11 @@ function Verdict(p: { hasRun: boolean; running: boolean; finished: boolean; firm
       <h1>
         <span className="n">{p.relevant}</span> of <span className="n">{p.scanned}</span> publications affect {p.firm}: <span className="n">{p.impacts}</span> changes across <span className="n">{p.policies}</span> {p.policies === 1 ? 'policy' : 'policies'}, <span className="n">{p.high}</span> high priority.
       </h1>
-      <p>{p.second ? `${p.second} of these are second-order: the publication is about something else, but it still lands on one of ${p.firm}’s processes.` : 'Open any row to see the regulator’s wording next to the policy it affects.'}</p>
+      <p>
+        {p.second ? `${p.second} of these are second-order: the publication is about something else, but it still lands on one of ${p.firm}’s processes. ` : 'Open any row to see the regulator’s wording next to the policy it affects. '}
+        {p.seconds > 0 && p.readMinutes > 0 ? `Just reading these ${p.scanned} pages (${p.words.toLocaleString()} words) takes about ${p.readMinutes} minutes at an average ${READING_WPM} words a minute, before any mapping to policies. This sweep read, mapped and cited them in ${p.seconds} seconds.` : ''}
+        {p.custom ? (p.custom === 1 ? ' Includes your own policy.' : ` Includes ${p.custom} of your own policies.`) : ''}
+      </p>
     </div>
   );
 }
@@ -373,6 +416,30 @@ function exportPega(run: RunResult, pubById: Map<string, Publication>, policyByI
   download(`regpulse-pega-cases-${run.window.to || 'run'}.json`, 'application/json', JSON.stringify({ format: 'Pega DX API v2 create-case payloads', cases }, null, 2));
 }
 
+/**
+ * Impact board as a CSV laid out for Jira's CSV importer (System > External system import > CSV):
+ * one Task per impact, with Summary, Priority, Due date, Labels and a Description carrying the evidence.
+ */
+function exportJira(run: RunResult, pubById: Map<string, Publication>, policyById: Map<string, PolicyDoc>) {
+  const q = (v: string) => `"${(v || '').replace(/"/g, '""')}"`;
+  const pri = { high: 'High', medium: 'Medium', low: 'Low' } as const;
+  const head = ['Summary', 'Issue Type', 'Priority', 'Due Date', 'Labels', 'Labels', 'Labels', 'Description'];
+  const body = rows(run, pubById, policyById).map(({ i, pub, doc }) => {
+    const desc = [
+      `*What has to change:* ${i.gap}`,
+      `*Next step:* ${i.action}`,
+      `*Policy:* ${i.policyId} ${doc?.title || ''}${i.controlIds.length ? ` (controls ${i.controlIds.join(', ')})` : ''}`,
+      `*Owner:* ${i.owner}`,
+      `*Source:* ${pub?.regulator || ''}, ${pub?.title || ''} ${pub?.url || ''}`,
+      `*Regulator's words:* {quote}${i.quote}{quote}`,
+      `*Due date basis:* ${i.dueBasis}`,
+      `_Generated by RegPulse; quote verified verbatim against the source._`,
+    ].join('\n');
+    return [`Update ${i.policyId}: ${(i.action || doc?.title || '').slice(0, 200)}`, 'Task', pri[i.severity], i.dueDate, 'regpulse', `reg-${(pub?.regulator || 'reg').toLowerCase().replace(/[^a-z]+/g, '-')}`, i.impactType, desc].map(q).join(',');
+  });
+  download(`regpulse-jira-${run.window.to || 'run'}.csv`, 'text/csv', [head.join(','), ...body].join('\n'));
+}
+
 function Board(p: {
   run: RunResult; running: boolean; pubById: Map<string, Publication>; policyById: Map<string, PolicyDoc>;
   sevFilter: 'all' | 'high' | 'medium' | 'low'; setSevFilter: (v: 'all' | 'high' | 'medium' | 'low') => void;
@@ -382,7 +449,7 @@ function Board(p: {
     return (
       <div className="empty-state">
         <h3>See it in action</h3>
-        <p>Open a recorded sweep of October 2026 straight away, or run the full pipeline live: Tavily search, Nemotron Nano triage, Nemotron Ultra assessment. A live sweep takes about a minute.</p>
+        <p>Open a recorded sweep of October 2026 straight away, or run the full pipeline live: Tavily search, Nemotron Nano triage, Nemotron Ultra assessment. A live sweep takes about a minute. To test it on your own material, add one of your policies under <b>Policy library</b> first.</p>
         <div className="row-actions" style={{ justifyContent: 'center' }}>
           <button className="btn" onClick={p.onRecorded} disabled={p.running}>Load recorded run (instant)</button>
           <button className="btn ghost" onClick={p.onRun} disabled={p.running}>Run live sweep</button>
@@ -406,6 +473,7 @@ function Board(p: {
         <button className="chip" aria-pressed={p.secondOnly} onClick={() => p.setSecondOnly(!p.secondOnly)}>Second-order only</button>
         <span className="runbar-spacer" />
         <button className="btn ghost small" onClick={() => exportCsv(p.run, p.pubById, p.policyById)}>Download CSV</button>
+        <button className="btn ghost small" onClick={() => exportJira(p.run, p.pubById, p.policyById)}>Download Jira CSV</button>
         <button className="btn ghost small" onClick={() => exportPega(p.run, p.pubById, p.policyById)}>Download Pega cases</button>
       </div>
       <div className="board-head" aria-hidden="true"><span>Priority</span><span>Policy</span><span>What has to change</span><span className="c-owner">Owner</span><span className="c-due">Due</span></div>
@@ -436,7 +504,7 @@ function Board(p: {
   );
 }
 
-function Evidence({ impact, pub, policy, onClose, onCalls }: { impact: Impact; pub: Publication; policy?: PolicyDoc; onClose: () => void; onCalls: (c: CallLog[]) => void }) {
+function Evidence({ impact, pub, policy, customPolicies, onClose, onCalls }: { impact: Impact; pub: Publication; policy?: PolicyDoc; customPolicies: PolicyDoc[]; onClose: () => void; onCalls: (c: CallLog[]) => void }) {
   const [full, setFull] = useState(false);
   const [ticket, setTicket] = useState<Ticket | null>(null);
   const [busy, setBusy] = useState(false);
@@ -470,7 +538,7 @@ function Evidence({ impact, pub, policy, onClose, onCalls }: { impact: Impact; p
     setBusy(true);
     setErr('');
     try {
-      const r = await fetch('/api/ticket', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ impact, publication: pub }) });
+      const r = await fetch('/api/ticket', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ impact, publication: pub, customPolicies }) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error);
       setTicket(j.ticket);
@@ -574,25 +642,61 @@ function Pubs({ pubs, triageById, assessments, running }: { pubs: Publication[];
   );
 }
 
-function Library({ docs, impacts, sel, setSel }: { docs: PolicyDoc[]; impacts: Impact[]; sel: string; setSel: (s: string) => void }) {
-  const doc = docs.find((d) => d.id === sel) || docs[0];
+function Library({ docs, custom, onSaveCustom, impacts, sel, setSel }: { docs: PolicyDoc[]; custom: PolicyDoc[]; onSaveCustom: (l: PolicyDoc[]) => void; impacts: Impact[]; sel: string; setSel: (s: string) => void }) {
+  const [adding, setAdding] = useState(false);
+  const [draft, setDraft] = useState({ title: '', owner: '', body: '' });
+  const all = [...docs, ...custom];
+  const doc = adding ? null : all.find((d) => d.id === sel) || all[0];
   const hits = (id: string) => impacts.filter((i) => i.policyId === id).length;
+  const wordCount = draft.body.split(/\s+/).filter(Boolean).length;
+  const canSave = draft.title.trim() && wordCount >= 15 && custom.length < 3;
+  const save = () => {
+    const next = [...custom, { id: '', title: draft.title.trim(), kind: 'Your policy', owner: draft.owner.trim() || 'Policy owner', reviewed: '', body: draft.body.trim().slice(0, 6000) }];
+    onSaveCustom(next);
+    setDraft({ title: '', owner: '', body: '' });
+    setAdding(false);
+    setSel(`MY-${next.length}`);
+  };
   return (
     <div className="lib">
       <nav className="lib-list" aria-label="Policies">
-        {docs.map((d) => (
-          <button key={d.id} className="lib-item" aria-current={d.id === doc.id} onClick={() => setSel(d.id)}>
-            <span className="pol-id">{d.id}</span>
+        <button className="lib-item add" aria-current={adding} onClick={() => setAdding(true)} disabled={custom.length >= 3}>
+          <span className="t">{custom.length >= 3 ? 'Limit of 3 of your own policies reached' : '+ Add your own policy'}</span>
+        </button>
+        {all.map((d) => (
+          <button key={d.id} className="lib-item" aria-current={!adding && doc?.id === d.id} onClick={() => { setAdding(false); setSel(d.id); }}>
+            <span className="pol-id">{d.id}{d.id.startsWith('MY-') ? ' · yours' : ''}</span>
             <span className="t">{d.title}</span>
             {hits(d.id) ? <span className="hits">{hits(d.id)} change{hits(d.id) > 1 ? 's' : ''} needed</span> : null}
           </button>
         ))}
       </nav>
-      <section className="sheet">
-        <h3>{doc.id}: {doc.title}</h3>
-        <div className="src">{doc.kind}. Owner {doc.owner}. Last reviewed {fmtDate(doc.reviewed)}.</div>
-        <div className="poltext">{doc.body}</div>
-      </section>
+      {adding ? (
+        <section className="sheet addform">
+          <h3>Try your own policy</h3>
+          <p className="src">Paste a policy or process of yours. The next sweep reads every publication against it, alongside Northbridge’s library. It stays in this browser and is sent only with your own requests. Up to 3 policies, 6,000 characters each. Please don’t paste anything confidential.</p>
+          <label className="field">Title<input value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} maxLength={120} placeholder="e.g. Customer Service Chatbot Standard" /></label>
+          <label className="field">Owner<input value={draft.owner} onChange={(e) => setDraft({ ...draft, owner: e.target.value })} maxLength={80} placeholder="e.g. Head of Customer Operations" /></label>
+          <label className="field">Policy text<textarea value={draft.body} onChange={(e) => setDraft({ ...draft, body: e.target.value })} maxLength={6000} rows={12} placeholder="Purpose, scope, rules and controls. Give controls IDs (e.g. C-BOT-01) if you want them cited." /></label>
+          <div className="row-actions">
+            <button className="btn" onClick={save} disabled={!canSave}>Save policy</button>
+            <button className="btn ghost" onClick={() => setDraft(EXAMPLE_POLICY)}>Fill in an example</button>
+            <button className="btn ghost" onClick={() => setAdding(false)}>Cancel</button>
+            <span className="src" style={{ margin: 0, alignSelf: 'center' }}>{wordCount} words{wordCount < 15 ? ' (at least 15)' : ''}</span>
+          </div>
+        </section>
+      ) : doc ? (
+        <section className="sheet">
+          <h3>{doc.id}: {doc.title}</h3>
+          <div className="src">{doc.kind}. Owner {doc.owner}.{doc.reviewed ? ` Last reviewed ${fmtDate(doc.reviewed)}.` : ' Added by you; run a sweep to check it.'}</div>
+          <div className="poltext">{doc.body}</div>
+          {doc.id.startsWith('MY-') && (
+            <div className="row-actions">
+              <button className="btn ghost small" onClick={() => { onSaveCustom(custom.filter((c) => c.id !== doc.id)); setSel('POL-INTRO'); }}>Remove this policy</button>
+            </div>
+          )}
+        </section>
+      ) : null}
     </div>
   );
 }

@@ -274,3 +274,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .analysis dd { margin-bottom: 10px; }
   .drawer { width: 100vw; }
 }
+
+/* Try your own policy */
+.lib-item.add { color: var(--focus); font-weight: 500; }
+.lib-item.add:disabled { color: var(--slate); cursor: default; }
+.addform { display: flex; flex-direction: column; gap: 12px; }
+.addform .field input, .addform .field textarea { width: 100%; font: inherit; font-size: 14px; color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; }
+.addform .field textarea { font-family: var(--sans); line-height: 1.5; resize: vertical; }

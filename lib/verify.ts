@@ -1,5 +1,5 @@
 import { LIBRARY } from './data';
-import type { Assessment, Impact, Publication, Urgency } from './types';
+import type { Assessment, Impact, PolicyDoc, Publication, Urgency } from './types';
 
 const URG: Urgency[] = ['high', 'medium', 'low'];
 export const asUrg = (v: unknown): Urgency => (URG.includes(v as Urgency) ? (v as Urgency) : 'medium');
@@ -46,11 +46,11 @@ export interface RawImpact {
   rationale?: string;
 }
 
-export function verifyImpacts(p: Publication, raw: RawImpact[], model: string, headline: string, noImpactReason?: string): Assessment {
+export function verifyImpacts(p: Publication, raw: RawImpact[], model: string, headline: string, noImpactReason?: string, lib: PolicyDoc[] = LIBRARY): Assessment {
   const impacts: Impact[] = [];
   const rejected: Assessment['rejected'] = [];
   raw.forEach((r, i) => {
-    const doc = LIBRARY.find((d) => d.id === r.policy_id);
+    const doc = lib.find((d) => d.id === r.policy_id);
     const quote = (r.quote || '').trim();
     if (!doc) return rejected.push({ policyId: r.policy_id, quote, why: 'Policy ID not in library' });
     if (!quoteInSource(quote, p.text)) return rejected.push({ policyId: r.policy_id, quote, why: 'Quote not found verbatim in source' });

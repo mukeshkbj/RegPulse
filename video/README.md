@@ -35,8 +35,8 @@ Listen to each clip. If a line sounds stiff, change the wording in `narration.js
 | 4 | 04-board (~12 s) | The finished headline sentence and the **Impact board**. | For a guaranteed result, use **Load recorded run**. |
 | 5 | 05-evidence (~28 s) | Click the **High** row: *Introducer and Broker Oversight Policy*. The evidence view opens: highlighted FCA sentence on the left, policy with the audit gap on the right. | Hover over the highlight and the "Quote found verbatim" tick. |
 | 6 | 06-guardrail (~11 s) | Stay on the evidence view, or cut to the "uncited claims dropped" fact in the strip. | |
-| 7 | 07-ticket (~13 s) | Click **Draft change ticket** (wait for it) → the ticket. Then the **Ask RegPulse** tab: click "What do we need to do about introducers after the Annex 1 action?" | Cut out the waiting time. |
-| 8 | 08-close (~23 s) | **Models and cost** tab: the green callout with the 93% saving, then the model table. End on the home page or a title card with the repo URL. | |
+| 7 | 07-ticket (~13 s) | Click **Draft change ticket** (wait for it) → the ticket. Hover **Download Jira CSV** / **Download Pega cases**. Then the **Ask RegPulse** tab: click "What do we need to do about introducers after the Annex 1 action?" | Cut out the waiting time. |
+| 8 | 08-close (~28 s) | The "33s vs ~11 min" fact on the board, then the **Models and cost** tab: the green callout with the 93% saving, then the model table. End on the home page or a title card with the repo URL. | |
 
 ## 3. Put it together
 
@@ -58,7 +58,7 @@ The text below is exactly what's in `narration.json`.
 4. Those six go to Nemotron Ultra, which reads each one against the whole policy library. And this is what comes back. Fourteen changes, two of them high priority, each with an owner and a date.
 5. Here's the one I'd look at first. The FCA has restricted six unregulated lenders over money laundering. Nothing to do with Northbridge, you'd think. But the same press release reminds regulated firms to check the registration of the Annex 1 firms they deal with. Some of Northbridge's introducers are exactly that. RegPulse found the open audit point in the introducer policy, and put the regulator's own words right next to it.
 6. Every finding has to quote the source word for word. If the quote isn't really there, the finding is thrown away. You can't act on a rule that doesn't exist.
-7. From here I can draft the change ticket. A user story with acceptance criteria, ready for Jira, or a Pega case. Or I can just ask a question, and the answer comes back with its sources.
-8. That whole sweep took thirty-three seconds and cost about eight cents on Nebius Token Factory. Sending the triage to Nano instead of Ultra cut that step's cost by ninety-three percent. It's open source, and you can point it at your own policies. RegPulse. So the one rule that matters doesn't get lost in the pile.
+7. From here I can draft the change ticket, or export everything as Jira tickets or Pega cases. Or I can just ask a question, and the answer comes back with its sources.
+8. Just reading those eleven pages would take a person about eleven minutes, before mapping anything. That whole sweep took thirty-three seconds and cost about eight cents on Nebius Token Factory. Sending the triage to Nano instead of Ultra cut that step's cost by ninety-three percent. It's open source, and you can try it on your own policies. RegPulse. So the one rule that matters doesn't get lost in the pile.
 
-The numbers in scenes 3, 4 and 8 come from the recorded run (`data/recorded-run.json`): 11 publications, 6 relevant, 14 changes, 2 high, 33 seconds, $0.08, 93% triage saving. If you record a different run, update them.
+The numbers in scenes 3, 4 and 8 come from the recorded run (`data/recorded-run.json`): 11 publications, 6 relevant, 14 changes, 2 high, 33 seconds, ~11 minutes' reading (2,626 words at 238 wpm), $0.08, 93% triage saving. If you record a different run, update them.

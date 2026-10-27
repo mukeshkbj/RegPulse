@@ -3,6 +3,7 @@ import path from 'path';
 import { config } from '@/lib/config';
 import { runSweep } from '@/lib/pipeline';
 import { allowSweep } from '@/lib/limits';
+import { sanitizeCustomPolicies } from '@/lib/data';
 import type { SweepEvent } from '@/lib/types';
 
 export const runtime = 'nodejs';
@@ -23,7 +24,7 @@ export async function POST(req: Request) {
       const enc = new TextEncoder();
       const emit = (e: SweepEvent) => controller.enqueue(enc.encode(JSON.stringify(e) + '\n'));
       try {
-        const run = await runSweep({ source, from, to }, emit);
+        const run = await runSweep({ source, from, to, custom: sanitizeCustomPolicies(body.customPolicies) }, emit);
         emit({ type: 'done', run });
         if (config().record && !run.mock) {
           const dir = path.join(process.cwd(), 'data');

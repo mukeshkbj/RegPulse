@@ -1,6 +1,7 @@
 import { allowCall } from '@/lib/limits';
 import { Telemetry } from '@/lib/llm';
 import { answer } from '@/lib/pipeline';
+import { fullLibrary, sanitizeCustomPolicies } from '@/lib/data';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -12,7 +13,7 @@ export async function POST(req: Request) {
   try {
     const { question, run, history } = await req.json();
     const t = new Telemetry();
-    const reply = await answer(String(question || '').slice(0, 1000), run, Array.isArray(history) ? history : [], t);
+    const reply = await answer(String(question || '').slice(0, 1000), run, Array.isArray(history) ? history : [], t, fullLibrary(sanitizeCustomPolicies(run?.customPolicies)));
     return Response.json({ reply, calls: t.calls });
   } catch (e) {
     return Response.json({ error: (e as Error).message }, { status: 500 });
