@@ -52,7 +52,7 @@ From the recorded run in `data/recorded-run.json` (captured corpus, 1–27 Octob
 | Publications scanned | 11 |
 | Relevant after Nano triage | 6 (fund, transaction-reporting, DeFi and PRA-only items correctly excluded) |
 | Verified impacts | 14 across 8 policies: 2 high priority, 5 second-order |
-| Uncited claims dropped | 0 (an earlier, untuned run dropped 6, including an invented policy ID) |
+| Uncited claims dropped | 0 (an earlier, untuned run dropped 4, including an invented policy ID) |
 | Wall time | 33 seconds |
 | Model cost | $0.08 in total: triage $0.0024 for 11 Nano calls, assessment $0.078 for 6 Ultra calls |
 | Triage saving from routing | 93% compared with running triage on Ultra |
