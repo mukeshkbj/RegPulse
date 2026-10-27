@@ -37,6 +37,10 @@ RegPulse is built to catch exactly these.
 | 4. Verify citations | Rejects any impact whose quote is not in the source text verbatim, whose policy ID does not exist, or whose control ID is not in that policy | Deterministic code |
 | 5. Act | Evidence view shows the regulator's words highlighted next to the affected policy; **Draft change ticket** writes a user story with acceptance criteria; **Ask RegPulse** answers questions with citations | **Nemotron Ultra** |
 
+**Exports:** **Download CSV** gives the impact board for a spreadsheet or GRC tool. **Download Pega cases** gives one Pega DX API v2 create-case payload per impact, so findings can open regulatory-change cases in a Pega application. The case type ID is an example; map it to your own.
+
+**Public demo protection:** live sweeps are rate-limited per visitor (3 per hour) and per day. When a limit is reached, the app shows the recorded run instead of failing. Tune this with `SWEEPS_PER_HOUR_PER_VISITOR`, `SWEEPS_PER_DAY` (0 = recorded run only) and `CALLS_PER_HOUR_PER_VISITOR`.
+
 The **Models and cost** tab logs every call with model, tokens, latency and cost. It also shows how much the two-tier routing saved compared with running everything on Ultra.
 
 ### Results from a real run
@@ -47,7 +51,7 @@ From the recorded run in `data/recorded-run.json` (captured corpus, 1–27 Octob
 | --- | --- |
 | Publications scanned | 11 |
 | Relevant after Nano triage | 6 (fund, transaction-reporting, DeFi and PRA-only items correctly excluded) |
-| Verified impacts | 14 across 8 policies: 2 high priority, 6 second-order |
+| Verified impacts | 14 across 8 policies: 2 high priority, 5 second-order |
 | Uncited claims dropped | 0 (an earlier, untuned run dropped 6, including an invented policy ID) |
 | Wall time | 33 seconds |
 | Model cost | $0.08 in total: triage $0.0024 for 11 Nano calls, assessment $0.078 for 6 Ultra calls |

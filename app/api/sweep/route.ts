@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { config } from '@/lib/config';
 import { runSweep } from '@/lib/pipeline';
+import { allowSweep } from '@/lib/limits';
 import type { SweepEvent } from '@/lib/types';
 
 export const runtime = 'nodejs';
@@ -10,6 +11,8 @@ export const maxDuration = 300;
 
 /** Streams sweep progress as NDJSON so the UI can show each stage live. */
 export async function POST(req: Request) {
+  const gate = allowSweep(req);
+  if (!gate.ok) return Response.json({ error: gate.reason, fallback: 'recorded' }, { status: 429 });
   const body = await req.json().catch(() => ({}));
   const source = body.source === 'live' ? 'live' : 'corpus';
   const from = /^\d{4}-\d{2}-\d{2}$/.test(body.from) ? body.from : '2026-10-01';

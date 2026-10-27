@@ -69,6 +69,7 @@ export default function Home() {
   const [logs, setLogs] = useState<{ t: string; level: string; msg: string }[]>([]);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
   const [tab, setTab] = useState<Tab>('board');
   const [source, setSource] = useState<'corpus' | 'live'>('corpus');
   const [from, setFrom] = useState('2026-10-01');
@@ -102,6 +103,7 @@ export default function Home() {
   async function startSweep() {
     setRunning(true);
     setError('');
+    setNotice('');
     setSelected(null);
     setExtraCalls([]);
     setLogs([]);
@@ -111,6 +113,13 @@ export default function Home() {
     const t0 = Date.now();
     try {
       const res = await fetch('/api/sweep', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ source, from, to }) });
+      if (res.status === 429) {
+        const j = await res.json().catch(() => ({}));
+        setNotice(`${j.error || 'Live sweeps are limited on this demo.'} Showing the recorded run instead.`);
+        setRunning(false);
+        await loadRecorded();
+        return;
+      }
       if (!res.body) throw new Error('No response stream');
       const reader = res.body.getReader();
       const dec = new TextDecoder();
@@ -217,6 +226,7 @@ export default function Home() {
 
         {status?.mock && <div className="banner">Mock mode: no Token Factory key is set, so triage and assessment use rule-based stand-ins. Add NEBIUS_API_KEY to .env.local to run Nemotron.</div>}
         {error && <div className="banner error">{error}</div>}
+        {notice && <div className="banner">{notice}</div>}
 
         <Verdict hasRun={hasRun} running={running} finished={finished} firm={status?.firm.short || 'Northbridge'} scanned={run.publications.length} relevant={relevantCount} impacts={allImpacts.length} policies={affectedPolicies} high={highCount} second={secondCount} />
 
@@ -249,7 +259,7 @@ export default function Home() {
           {tab === 'board' && (
             <Board
               run={run} running={running} pubById={pubById} policyById={policyById} sevFilter={sevFilter} setSevFilter={setSevFilter}
-              secondOnly={secondOnly} setSecondOnly={setSecondOnly} selected={selected} onSelect={setSelected} onRun={startSweep}
+              secondOnly={secondOnly} setSecondOnly={setSecondOnly} selected={selected} onSelect={setSelected} onRun={startSweep} onRecorded={loadRecorded}
             />
           )}
           {tab === 'pubs' && <Pubs pubs={run.publications} triageById={triageById} assessments={run.assessments} running={running} />}
@@ -304,17 +314,79 @@ function Verdict(p: { hasRun: boolean; running: boolean; finished: boolean; firm
   );
 }
 
+function download(name: string, type: string, text: string) {
+  const url = URL.createObjectURL(new Blob([text], { type }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function rows(run: RunResult, pubById: Map<string, Publication>, policyById: Map<string, PolicyDoc>) {
+  return run.assessments.flatMap((a) =>
+    a.impacts.map((i) => {
+      const pub = pubById.get(i.pubId);
+      return { i, pub, doc: policyById.get(i.policyId) };
+    })
+  );
+}
+
+/** Impact board as CSV, for a spreadsheet or a GRC tool import. */
+function exportCsv(run: RunResult, pubById: Map<string, Publication>, policyById: Map<string, PolicyDoc>) {
+  const q = (v: string) => `"${(v || '').replace(/"/g, '""')}"`;
+  const head = ['Severity', 'Impact type', 'Policy ID', 'Policy', 'Controls', 'Gap', 'Next step', 'Owner', 'Due date', 'Regulator', 'Publication', 'URL', 'Quote'];
+  const body = rows(run, pubById, policyById).map(({ i, pub, doc }) =>
+    [i.severity, i.impactType, i.policyId, doc?.title || '', i.controlIds.join(' '), i.gap, i.action, i.owner, i.dueDate, pub?.regulator || '', pub?.title || '', pub?.url || '', i.quote].map(q).join(',')
+  );
+  download(`regpulse-impacts-${run.window.to || 'run'}.csv`, 'text/csv', [head.join(','), ...body].join('\n'));
+}
+
+/**
+ * Impact board as Pega DX API v2 case-creation payloads (POST /api/application/v2/cases), one case per
+ * impact. The case type ID is an example; map it to your application's regulatory change case type.
+ */
+function exportPega(run: RunResult, pubById: Map<string, Publication>, policyById: Map<string, PolicyDoc>) {
+  const cases = rows(run, pubById, policyById).map(({ i, pub, doc }) => ({
+    caseTypeID: 'NB-RegChange-Work-RegulatoryChange',
+    processID: 'pyStartCase',
+    content: {
+      pyLabel: `${i.policyId}: ${doc?.title || ''}`.slice(0, 64),
+      Severity: i.severity,
+      ImpactType: i.impactType,
+      PolicyID: i.policyId,
+      PolicyTitle: doc?.title,
+      ControlIDs: i.controlIds.join(', '),
+      GapDescription: i.gap,
+      RecommendedAction: i.action,
+      PolicyOwner: i.owner,
+      TargetResolutionDate: i.dueDate,
+      DueDateBasis: i.dueBasis,
+      Regulator: pub?.regulator,
+      PublicationTitle: pub?.title,
+      PublicationURL: pub?.url,
+      PublicationDate: pub?.published,
+      EvidenceQuote: i.quote,
+      QuoteVerified: i.verified,
+    },
+  }));
+  download(`regpulse-pega-cases-${run.window.to || 'run'}.json`, 'application/json', JSON.stringify({ format: 'Pega DX API v2 create-case payloads', cases }, null, 2));
+}
+
 function Board(p: {
   run: RunResult; running: boolean; pubById: Map<string, Publication>; policyById: Map<string, PolicyDoc>;
   sevFilter: 'all' | 'high' | 'medium' | 'low'; setSevFilter: (v: 'all' | 'high' | 'medium' | 'low') => void;
-  secondOnly: boolean; setSecondOnly: (v: boolean) => void; selected: Impact | null; onSelect: (i: Impact) => void; onRun: () => void;
+  secondOnly: boolean; setSecondOnly: (v: boolean) => void; selected: Impact | null; onSelect: (i: Impact) => void; onRun: () => void; onRecorded: () => void;
 }) {
   if (!p.run.publications.length) {
     return (
       <div className="empty-state">
-        <h3>No sweep yet</h3>
-        <p>Run a sweep to see which publications change {`Northbridge`}’s policies.</p>
-        <button className="btn" onClick={p.onRun} disabled={p.running}>Run sweep</button>
+        <h3>See it in action</h3>
+        <p>Open a recorded sweep of October 2026 straight away, or run the full pipeline live: Tavily search, Nemotron Nano triage, Nemotron Ultra assessment. A live sweep takes about a minute.</p>
+        <div className="row-actions" style={{ justifyContent: 'center' }}>
+          <button className="btn" onClick={p.onRecorded} disabled={p.running}>Load recorded run (instant)</button>
+          <button className="btn ghost" onClick={p.onRun} disabled={p.running}>Run live sweep</button>
+        </div>
       </div>
     );
   }
@@ -332,6 +404,9 @@ function Board(p: {
           <button key={s} className="chip" aria-pressed={p.sevFilter === s} onClick={() => p.setSevFilter(s)}>{s === 'all' ? 'All priorities' : s[0].toUpperCase() + s.slice(1)}</button>
         ))}
         <button className="chip" aria-pressed={p.secondOnly} onClick={() => p.setSecondOnly(!p.secondOnly)}>Second-order only</button>
+        <span className="runbar-spacer" />
+        <button className="btn ghost small" onClick={() => exportCsv(p.run, p.pubById, p.policyById)}>Download CSV</button>
+        <button className="btn ghost small" onClick={() => exportPega(p.run, p.pubById, p.policyById)}>Download Pega cases</button>
       </div>
       <div className="board-head" aria-hidden="true"><span>Priority</span><span>Policy</span><span>What has to change</span><span className="c-owner">Owner</span><span className="c-due">Due</span></div>
       <div className="docket">
