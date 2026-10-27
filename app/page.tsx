@@ -587,7 +587,13 @@ function Ask({ run, onCalls }: { run: RunResult; onCalls: (c: CallLog[]) => void
     }
   }
   if (!run.publications.length) return <div className="empty-state"><h3>Run a sweep first</h3><p>RegPulse answers from this sweep’s publications and the firm’s policy library.</p></div>;
-  const render = (s: string) => s.split(/(\[(?:PUB|POL):[^\]]+\])/g).map((part, i) => /^\[(PUB|POL):/.test(part) ? <span key={i} className="cite">{part.slice(1, -1)}</span> : <span key={i}>{part}</span>);
+  // Light formatting for model answers: [PUB:x]/[POL:x] citation chips and **bold**.
+  const render = (s: string) =>
+    s.split(/(\[(?:PUB|POL):[^\]]+\]|\*\*[^*]+\*\*)/g).map((part, i) =>
+      /^\[(PUB|POL):/.test(part) ? <span key={i} className="cite">{part.slice(1, -1)}</span>
+      : /^\*\*[^*]+\*\*$/.test(part) ? <strong key={i}>{part.slice(2, -2)}</strong>
+      : <span key={i}>{part}</span>
+    );
   return (
     <div className="chat">
       <div className="msgs" aria-live="polite">
