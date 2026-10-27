@@ -11,11 +11,11 @@
     },
     {
       "id": "03-sweep",
-      "text": "When I run a sweep, Tavily searches the regulators' websites for the dates I choose and brings back clean text. Then a small, fast model, Nemotron Nano, reads every publication and asks one question. Does this apply to us? Fund rules, crypto, and anything that's PRA only, drop out straight away. Six of the eleven go through."
+      "text": "When I run a sweep, Tavily searches the regulators' websites for the dates I choose and brings back clean text. Then a small, fast model, Nemotron Nano, reads every publication and asks one question. Does this apply to us? Fund rules, crypto, and anything that's PRA only, drop out straight away."
     },
     {
       "id": "04-board",
-      "text": "Those six go to Nemotron Ultra, which reads each one against the whole policy library. And this is what comes back. Fourteen changes, two of them high priority, each with an owner and a date."
+      "text": "The ones that matter go to Nemotron Ultra, which reads each one against the whole policy library. Here's a recorded run from this month. Fourteen changes, two of them high priority, each with an owner and a date."
     },
     {
       "id": "05-evidence",
